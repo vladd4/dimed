@@ -1,0 +1,95 @@
+@import "../../styles/variables";
+
+.root {
+  width: 75%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  color: $color-black;
+  padding-bottom: 5%;
+  h2 {
+    font-size: calc(#{$size}* 1.6);
+    font-weight: 400;
+    margin-bottom: 0%;
+  }
+  p {
+    font-size: calc(#{$size}/ 1.35);
+    margin-bottom: 3%;
+  }
+  form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 5%;
+    justify-content: space-between;
+    .input_block {
+      width: 65%;
+      display: grid;
+      place-items: center;
+      row-gap: 20px;
+      input {
+        width: 94%;
+        background-color: $color-blur-light;
+        border-radius: 13px;
+        border: 1px solid $color-blur-light;
+        font-size: calc(#{$size});
+        font-family: inherit;
+        padding: 4% 3%;
+      }
+    }
+    .buttons_block {
+      width: 40%;
+      h2 {
+        font-size: calc(#{$size}/ 1.1);
+        font-weight: 600;
+        margin: 0;
+      }
+      .radio_btns {
+        width: 100%;
+        gap: 2%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .radio_input {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          flex: 1;
+          gap: 3%;
+          margin: 2% 0%;
+          input {
+            height: 20px;
+            margin-top: -1%;
+            width: 20px;
+          }
+        }
+        p {
+          font-size: calc(#{$size}/ 1.45);
+          margin: 0%;
+          margin: 4% 0%;
+          width: 100%;
+        }
+      }
+      button {
+        font-size: calc(#{$size}/ 1.2);
+        background-color: $color-blue;
+        color: #fff;
+        font-family: inherit;
+        padding: 6% 0%;
+        width: 100%;
+        box-shadow: 0px 0px 15px 0px rgba(56, 137, 242, 0.2);
+        border-radius: 13px;
+        border: 1px solid $color-blue;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 2%;
+        transition: all 0.3s;
+        &:hover {
+          background-color: $color-dark-blue;
+          border-color: $color-dark-blue;
+        }
+      }
+    }
+  }
+}

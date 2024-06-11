@@ -1,0 +1,52 @@
+@import "../../styles/variables";
+
+.root {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 3%;
+  margin-top: 1%;
+  .doctor_list {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2%;
+    row-gap: 25px;
+    flex-wrap: wrap;
+  }
+}
+.item_root {
+  width: 32%;
+  display: grid;
+  place-items: center;
+  background-color: $color-blur-light;
+  border-radius: 20px;
+  padding: 2% 0%;
+  padding-bottom: 1%;
+  color: $color-black;
+  img {
+    height: auto;
+    width: 85%;
+  }
+  .text_block {
+    display: grid;
+    place-items: center;
+    width: 85%;
+    h2 {
+      font-size: calc(#{$size});
+      text-align: center;
+      margin-bottom: 2%;
+    }
+    p {
+      text-align: center;
+      font-size: calc(#{$size}/ 1.5);
+      margin: 0;
+    }
+  }
+}
+.full_width {
+  width: 100% !important;
+}

@@ -1,0 +1,19 @@
+@import "../../styles/variables";
+
+.root {
+  width: 90%;
+  margin: 1% 0%;
+  display: grid;
+  margin-bottom: 4%;
+  place-items: center;
+  h2 {
+    font-size: calc(#{$size}* 1.4);
+    font-weight: 400;
+    color: $color-black;
+    margin-top: 0;
+  }
+}
+
+.slider {
+  width: 100% !important;
+}

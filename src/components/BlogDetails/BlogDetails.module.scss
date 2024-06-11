@@ -1,0 +1,71 @@
+@import "../../styles/variables";
+
+.root {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  margin-top: 1%;
+  margin-bottom: 2%;
+  .top_block {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2%;
+    img {
+      width: 50%;
+      height: auto;
+    }
+    .text_block {
+      width: 40%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      h2 {
+        margin: 0;
+        color: $color-black;
+        font-size: calc(#{$size}* 1.5);
+        font-weight: 400;
+        width: 100%;
+        text-align: start;
+        margin-bottom: 2%;
+      }
+      p {
+        margin: 0;
+        font-size: calc(#{$size}/ 1.4);
+        margin-bottom: 2%;
+      }
+    }
+    margin-bottom: 2%;
+  }
+  .blog_text {
+    width: 90%;
+    margin-top: 1%;
+    h2 {
+      margin: 0;
+      color: $color-black;
+      font-size: calc(#{$size}* 1.5);
+      font-weight: 400;
+      width: 100%;
+      text-align: start;
+      margin-bottom: 1%;
+    }
+    p {
+      margin: 0;
+      font-size: calc(#{$size}/ 1.4);
+      margin-bottom: 1%;
+    }
+  }
+  .bottom_image {
+    height: auto;
+    width: 40%;
+    margin: 2% 0%;
+  }
+  .author {
+    width: 90%;
+    text-align: start;
+    color: $color-blue;
+    font-size: calc(#{$size}/ 1.4);
+  }
+}

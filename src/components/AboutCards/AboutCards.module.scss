@@ -1,0 +1,39 @@
+@import "../../styles/variables";
+
+.root {
+  width: 90%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2%;
+  color: $color-black;
+  margin-bottom: 4%;
+  margin-top: 1%;
+  .card_item {
+    border-radius: 20px;
+    border: 3px solid $color-dark-blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 25%;
+    padding: 2%;
+    span {
+      color: $color-dark-blue;
+      font-size: calc(#{$size}* 3.5);
+      font-weight: 800;
+    }
+    p {
+      font-size: calc(#{$size}/ 1.4);
+      text-align: start;
+      width: 100%;
+    }
+    .lable {
+      font-weight: bold;
+      font-size: calc(#{$size}/ 1.1);
+      text-align: start;
+      width: 100%;
+      margin: 0;
+    }
+  }
+}

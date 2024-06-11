@@ -1,0 +1,41 @@
+@import "../../styles/variables";
+
+.root {
+  width: 90%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 4%;
+  margin: 3% 0%;
+  .text_block {
+    width: 50%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    color: $color-black;
+    h2 {
+      font-size: calc(#{$size}* 1.4);
+      font-weight: 400;
+      max-width: 60%;
+      margin: 0;
+      margin-bottom: 3.5%;
+      margin-left: 3%;
+    }
+    .text_item {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 2%;
+      p {
+        font-size: calc(#{$size}/ 1.4);
+        margin: 0;
+        margin-bottom: 2%;
+        b {
+          font-size: calc(#{$size}/ 1.1);
+        }
+      }
+    }
+  }
+}

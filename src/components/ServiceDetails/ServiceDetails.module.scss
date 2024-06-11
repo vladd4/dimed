@@ -1,0 +1,82 @@
+@import "../../styles/variables";
+
+.root {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  margin-top: 1%;
+  margin-bottom: 3%;
+  .top_block {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2%;
+    img {
+      width: 48%;
+      height: auto;
+    }
+    .text_block {
+      width: 45%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      h2 {
+        margin: 0;
+        color: $color-black;
+        font-size: calc(#{$size}* 1.5);
+        font-weight: 400;
+        width: 100%;
+        text-align: start;
+        margin-bottom: 2%;
+      }
+      p {
+        margin: 0;
+        font-size: calc(#{$size}/ 1.4);
+        margin-bottom: 2%;
+      }
+    }
+  }
+  .bottom_block {
+    width: 90%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 4%;
+    gap: 2%;
+    .bottom_div {
+      width: 45%;
+      display: grid;
+      place-items: center;
+      h2 {
+        color: $color-black;
+        font-size: calc(#{$size}* 1.4);
+        font-weight: 400;
+        margin: 1% 0%;
+        margin-bottom: 5%;
+      }
+      .bottom_item {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 2%;
+        color: $color-black;
+        margin-bottom: 3%;
+        .svg {
+          margin-top: -2%;
+        }
+        h3 {
+          font-size: calc(#{$size}/ 1.1);
+          margin: 0;
+          margin-bottom: 1.5%;
+        }
+        p {
+          margin: 0;
+          font-size: calc(#{$size}/ 1.4);
+        }
+      }
+    }
+  }
+}

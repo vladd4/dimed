@@ -1,0 +1,31 @@
+@import "./font.scss";
+@import "./variables";
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Fixel";
+}
+.main {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: $color-blue;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a5a5a5;
+}
+#doctors-slider {
+  width: 100% !important;
+}

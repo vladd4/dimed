@@ -1,0 +1,66 @@
+@import "../../styles/variables";
+
+.root {
+  width: 90%;
+  color: $color-black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 1%;
+  .top_block {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2%;
+    .text_block {
+      width: 40%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      h2 {
+        font-size: calc(#{$size}* 1.4);
+        font-weight: 400;
+        margin: 0%;
+        margin-bottom: 2%;
+      }
+      p {
+        font-size: calc(#{$size}/ 1.4);
+        margin: 1% 0%;
+      }
+    }
+    img {
+      height: auto;
+      width: 50%;
+    }
+  }
+  .bottom_block {
+    width: 100%;
+    margin-top: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    h2 {
+      font-size: calc(#{$size}* 1.4);
+      font-weight: 400;
+      margin: 0;
+      margin-bottom: 0.5%;
+      width: 100%;
+      text-align: start;
+    }
+    p {
+      font-size: calc(#{$size}/ 1.4);
+      margin: 1% 0%;
+      width: 100%;
+      text-align: start;
+    }
+    img {
+      width: 50%;
+      height: auto;
+      margin: 3% 0%;
+    }
+  }
+}

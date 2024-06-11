@@ -1,0 +1,106 @@
+@import "../../styles/variables";
+
+.root {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: $color-black;
+  h2 {
+    font-size: calc(#{$size}* 1.4);
+    font-weight: 400;
+  }
+  footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    .logo_block {
+      width: 30%;
+      display: grid;
+      place-items: start;
+      img {
+        height: auto;
+        width: 60%;
+        margin-bottom: 5%;
+      }
+      p {
+        font-size: calc(#{$size}/ 1.5);
+        margin: 2% 0%;
+      }
+      .socials {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 5%;
+        margin-top: 3%;
+        a {
+          width: 9%;
+          transition: all 0.3s;
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+    .links_block {
+      width: 65%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      gap: 8%;
+      div {
+        h3 {
+          font-size: calc(#{$size}/ 1.1);
+        }
+        p {
+          font-size: calc(#{$size}/ 1.5);
+          transition: all 0.3s;
+          cursor: pointer;
+          &:hover {
+            color: $color-blue;
+          }
+        }
+      }
+      .clock {
+        cursor: auto !important;
+        &:hover {
+          color: $color-black !important;
+        }
+        p {
+          cursor: auto !important;
+          &:hover {
+            color: $color-black !important;
+          }
+        }
+      }
+      .icons_block {
+        .icons_item {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 3%;
+          text-decoration: none;
+          color: $color-black;
+          font-size: calc(#{$size}/ 1.5);
+          transition: all 0.3s;
+          &:hover {
+            color: $color-blue;
+          }
+        }
+      }
+    }
+  }
+  .copy {
+    font-size: calc(#{$size}/ 1.5);
+  }
+}
