@@ -16,13 +16,13 @@ export default function AlertForm() {
     dispatch(setShowAlert(state));
   };
 
-  useClickOutside(
-    alertRef,
-    showAlert,
-    handleCloseForm,
-    document?.getElementById("alert-open") &&
-      document.getElementById("alert-open")
-  );
+  // useClickOutside(
+  //   alertRef,
+  //   showAlert,
+  //   handleCloseForm,
+  //   document?.getElementById("alert-open") &&
+  //     document.getElementById("alert-open")
+  // );
   return (
     <>
       <section
