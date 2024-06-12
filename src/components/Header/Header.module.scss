@@ -53,5 +53,67 @@
         }
       }
     }
+    .hamburger_icon {
+      display: none;
+      cursor: pointer;
+      color: $color-dark-blue;
+      transition: all 0.3s;
+      &:hover {
+        color: $color-blue;
+      }
+    }
+    .phone_mobile {
+      display: none;
+      width: 9%;
+      height: auto;
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+    .mobile_div {
+      display: none;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 5%;
+      width: 75%;
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .root {
+    padding: 2% 0%;
+    .wrapper {
+      nav {
+        display: none;
+      }
+      .hamburger_icon {
+        display: block;
+      }
+      .phone_mobile {
+        display: block;
+      }
+      a {
+        width: 20%;
+      }
+      .mobile_div {
+        display: flex;
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .root {
+    padding: 3% 0%;
+    .wrapper {
+      .phone_mobile {
+        width: 12%;
+      }
+      a {
+        width: 25%;
+      }
+    }
   }
 }

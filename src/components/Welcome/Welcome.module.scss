@@ -50,3 +50,54 @@
     }
   }
 }
+.mobile_btn {
+  display: none;
+  width: 95%;
+  font-size: 15px;
+  background-color: $color-blue;
+  color: #fff;
+  padding: 3% 5%;
+  border-radius: 10px;
+  border: 1px solid $color-blue;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 3%;
+  font-family: inherit;
+  transition: all 0.3s;
+  &:hover {
+    background-color: $color-dark-blue;
+    border-color: $color-dark-blue;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .root {
+    margin-top: 12%;
+    border-radius: 10px;
+    width: 85%;
+    flex-direction: column;
+    padding: 5% 4%;
+    .wrapper {
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      width: 92%;
+      padding: 6% 4%;
+      h1 {
+        text-align: center;
+        font-size: 17px;
+      }
+      button {
+        display: none;
+      }
+    }
+  }
+  .mobile_btn {
+    display: block;
+  }
+}
+@media screen and (max-width: 500px) {
+  .root {
+    margin-top: 15%;
+  }
+}

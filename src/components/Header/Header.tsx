@@ -8,6 +8,7 @@ import Logo from "@/../public/logo-black.png";
 import Phone from "@/../public/phone-icon.svg";
 import { useAppDispatch } from "../../hooks/redux-hooks";
 import { setShowAlert } from "@/redux/slices/alertSlice";
+import { AlignJustify } from "lucide-react";
 
 const links = [
   {
@@ -59,6 +60,16 @@ export default function Header() {
             onClick={() => dispatch(setShowAlert(true))}
           />
         </nav>
+        <div className={styles.mobile_div}>
+          <Image
+            id="alert-open"
+            alt="Contact Us"
+            className={styles.phone_mobile}
+            src={Phone}
+            onClick={() => dispatch(setShowAlert(true))}
+          />
+          <AlignJustify className={styles.hamburger_icon} size={35} />
+        </div>
       </div>
     </header>
   );

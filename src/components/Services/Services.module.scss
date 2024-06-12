@@ -91,3 +91,53 @@
     }
   }
 }
+
+@media screen and (max-width: 900px) {
+  .root {
+    .cards_block {
+      .service_block {
+        flex: 0 0 49%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 650px) {
+  .root {
+    width: 95%;
+    h2 {
+      font-size: 22px;
+    }
+    p {
+      font-size: 15px;
+      text-align: center;
+      margin-bottom: 2%;
+    }
+    .cards_block {
+      .service_block {
+        flex: 0 0 100%;
+        .serv_list {
+          .list_item {
+            p {
+              font-size: 15px;
+              text-align: start;
+            }
+          }
+        }
+        .card {
+          img {
+            width: 35%;
+          }
+          h2 {
+            font-size: 18px;
+          }
+          p {
+            font-size: 15px;
+          }
+          .more_btn {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}

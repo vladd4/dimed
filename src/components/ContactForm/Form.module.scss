@@ -93,3 +93,55 @@
     }
   }
 }
+
+@media screen and (max-width: 900px) {
+  .root {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .root {
+    width: 95%;
+    h2 {
+      font-size: 22px;
+    }
+    p {
+      font-size: 15px;
+    }
+    form {
+      flex-direction: column;
+      margin-top: 2%;
+      row-gap: 25px;
+      .input_block {
+        width: 100%;
+        row-gap: 15px;
+        input {
+          font-size: 15px;
+          border-radius: 10px;
+        }
+      }
+      .buttons_block {
+        width: 100%;
+        h2 {
+          font-size: 18px;
+          text-align: center;
+        }
+        button {
+          font-size: 17px;
+        }
+        .radio_btns {
+          margin: 4% 0%;
+          margin-bottom: 3%;
+          flex-direction: column;
+          .radio_input {
+            width: 100%;
+            p {
+              font-size: 15px;
+              margin: 1% 0%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

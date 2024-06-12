@@ -57,3 +57,29 @@
     }
   }
 }
+
+@media screen and (max-width: 650px) {
+  .root {
+    width: 95%;
+    h2 {
+      font-size: 22px;
+    }
+    .cards_block {
+      flex-wrap: wrap;
+      .card {
+        width: 100%;
+        margin-bottom: 3%;
+        h2 {
+          font-size: 17px;
+        }
+        .card_list {
+          .list_item {
+            p {
+              font-size: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
