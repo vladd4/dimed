@@ -66,3 +66,34 @@
     }
   }
 }
+@media screen and (max-width: 650px) {
+  .root {
+    width: 95%;
+    margin: 4% 0%;
+    margin-bottom: 7%;
+    .label {
+      width: 100%;
+      font-size: 18px;
+      text-align: center;
+    }
+    p {
+      font-size: 15px;
+      width: 100%;
+    }
+    .button_block {
+      width: 95%;
+      margin-top: 2%;
+      padding: 5% 3%;
+      p {
+        font-size: 15px !important;
+        width: fit-content !important;
+      }
+      span {
+        font-size: 15px !important;
+      }
+      button {
+        font-size: 15px;
+      }
+    }
+  }
+}

@@ -50,3 +50,30 @@
 .full_width {
   width: 100% !important;
 }
+
+@media screen and (max-width: 800px) {
+  .item_root {
+    width: 49%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .root {
+    width: 95%;
+    .doctor_list {
+      row-gap: 15px;
+    }
+  }
+  .item_root {
+    width: 100%;
+    padding-top: 5%;
+    padding-bottom: 3%;
+    .text_block {
+      h2 {
+        font-size: 18px;
+      }
+      p {
+        font-size: 15px;
+      }
+    }
+  }
+}

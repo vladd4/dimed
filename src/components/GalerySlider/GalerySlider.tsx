@@ -28,12 +28,10 @@ const GalerySlider = () => {
         arrows: true,
         breakpoints: {
           850: {
-            perPage: 3,
+            perPage: 2,
           },
           650: {
-            pagination: false,
-            perPage: 2,
-            arrows: false,
+            perPage: 1,
           },
         },
       }}

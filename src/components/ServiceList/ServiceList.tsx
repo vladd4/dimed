@@ -71,7 +71,7 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
                   />
                   <h2>{service.label}</h2>
                 </div>
-                {isPricing && (
+                {isPricing ? (
                   <div
                     className={`${styles.table} ${
                       isClickedPrice.includes(service.id)
@@ -103,6 +103,22 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
                       <p>Загальний оздоровчий масаж 90хв.</p>
                       <span>800 грн</span>
                     </div>
+                  </div>
+                ) : (
+                  <div
+                    className={`${styles.table} ${
+                      isClickedService === service.id
+                        ? styles.show_table_mobile
+                        : ""
+                    } ${styles.table_mobile}`}
+                  >
+                    {service.services.map((serv) => {
+                      return (
+                        <p className={styles.mobile_service} key={serv}>
+                          {serv}
+                        </p>
+                      );
+                    })}
                   </div>
                 )}
               </>
