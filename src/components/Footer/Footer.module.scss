@@ -22,10 +22,13 @@
       width: 30%;
       display: grid;
       place-items: start;
-      img {
-        height: auto;
+      .image_link {
         width: 60%;
         margin-bottom: 5%;
+        img {
+          height: auto;
+          width: 100%;
+        }
       }
       p {
         font-size: calc(#{$size}/ 1.5);
@@ -137,7 +140,7 @@
         width: 100%;
         place-items: center;
         margin-top: 7%;
-        img {
+        .image_link {
           width: 30%;
         }
         p {

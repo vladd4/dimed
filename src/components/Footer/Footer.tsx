@@ -7,6 +7,7 @@ import Face from "@/../public/face.png";
 import Insta from "@/../public/insta.png";
 import Teleg from "@/../public/teleg.png";
 import { Clock, MapPin, Phone } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -14,7 +15,9 @@ export default function Footer() {
       <h2>Контакти</h2>
       <footer className={styles.footer}>
         <div className={styles.logo_block}>
-          <Image alt="DIMED" src={Logo} width={238} height={51} />
+          <Link className={styles.image_link} href="/">
+            <Image alt="DIMED" src={Logo} width={238} height={51} />
+          </Link>
           <p>Безопераційне відновлення хребта та суглобів</p>
           <p>Центр вертебрології</p>
           <div className={styles.socials}>
