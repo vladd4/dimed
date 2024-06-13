@@ -35,7 +35,7 @@ const DoctorsSlider = () => {
       className={styles.slider}
       id="doctors-slider"
     >
-      <SplideSlide>
+      {/* <SplideSlide>
         <DoctorCard isFull />
       </SplideSlide>
       <SplideSlide>
@@ -49,7 +49,7 @@ const DoctorsSlider = () => {
       </SplideSlide>
       <SplideSlide>
         <DoctorCard isFull />
-      </SplideSlide>
+      </SplideSlide> */}
     </Splide>
   );
 };
