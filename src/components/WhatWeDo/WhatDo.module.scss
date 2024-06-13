@@ -48,14 +48,64 @@
           align-items: center;
           justify-content: flex-start;
           gap: 2%;
+          position: relative;
           p {
             font-size: calc(#{$size}/ 1.4);
             margin: 1.5% 0%;
+          }
+          .delete {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            cursor: pointer;
+            transition: all 0.3s;
+            &:hover {
+              color: red;
+            }
+          }
+        }
+        .add_form {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          margin-top: 5%;
+          input {
+            width: 94%;
+            font-size: calc(#{$size}/ 1.4);
+            font-family: inherit;
+            padding: 2% 3%;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 2%;
+          }
+          button {
+            font-size: calc(#{$size}/ 1.4);
+            background-color: $color-blue;
+            color: #fff;
+            width: 100%;
+            padding: 2% 0%;
+            border-radius: 5px;
+            border: 1px solid $color-blue;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s;
+            &:hover {
+              background-color: $color-dark-blue;
+              border-color: $color-dark-blue;
+            }
           }
         }
       }
     }
   }
+}
+
+.admin_root {
+  margin-top: 2%;
 }
 
 @media screen and (max-width: 650px) {

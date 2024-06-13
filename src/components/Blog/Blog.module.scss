@@ -11,7 +11,6 @@
   h2 {
     font-size: calc(#{$size}* 1.4);
     font-weight: 400;
-    margin-top: 0;
   }
   .blog_list {
     width: 100%;
@@ -103,6 +102,7 @@
     width: 95%;
     h2 {
       font-size: 22px;
+      margin-top: 2%;
     }
   }
   .item_root {

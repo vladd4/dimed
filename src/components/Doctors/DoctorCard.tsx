@@ -1,21 +1,40 @@
-import Image from "next/image";
 import styles from "./Doctors.module.scss";
-
-import DoctorImage from "@/../public/doctor.png";
+import { Pencil, Trash2 } from "lucide-react";
 
 type CardProps = {
   isFull?: boolean;
+  isAdmin?: boolean;
+  name: string;
+  position: string;
+  image: string;
 };
 
-export default function DoctorCard({ isFull }: CardProps) {
+export default function DoctorCard({
+  isFull,
+  isAdmin,
+  name,
+  position,
+  image,
+}: CardProps) {
   return (
     <section
-      className={`${styles.item_root} ${isFull ? styles.full_width : ""}`}
+      className={`${styles.item_root} ${isFull ? styles.full_width : ""} ${
+        isAdmin ? styles.admin_item : ""
+      }`}
     >
-      <Image alt="Blog" src={DoctorImage} width={450} height={600} />
+      {isAdmin && (
+        <div className={styles.admin_controls}>
+          <Pencil size={22} />
+          <Trash2 size={22} />
+        </div>
+      )}
+      <div
+        className={styles.image}
+        style={{ backgroundImage: `url(${image})` }}
+      />
       <div className={styles.text_block}>
-        <h2>Lorem ipsum ipsum doloripsum dolor</h2>
-        <p>consectetur adipiscing elitconsectetur adipiscing elit</p>
+        <h2>{name}</h2>
+        <p>{position}</p>
       </div>
     </section>
   );

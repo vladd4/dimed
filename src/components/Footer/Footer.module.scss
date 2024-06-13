@@ -63,11 +63,16 @@
       div {
         h3 {
           font-size: calc(#{$size}/ 1.1);
+          margin-bottom: 18px;
         }
-        p {
+        a {
           font-size: calc(#{$size}/ 1.5);
           transition: all 0.3s;
           cursor: pointer;
+          text-decoration: none;
+          display: block;
+          margin-bottom: 13px;
+          color: $color-black;
           &:hover {
             color: $color-blue;
           }
@@ -93,6 +98,7 @@
           justify-content: flex-start;
           gap: 3%;
           text-decoration: none;
+          margin: 0 !important;
           color: $color-black;
           font-size: calc(#{$size}/ 1.5);
           transition: all 0.3s;
@@ -164,6 +170,7 @@
             font-size: 17px;
             text-align: center;
           }
+          a,
           p {
             font-size: 15px;
             text-align: center;

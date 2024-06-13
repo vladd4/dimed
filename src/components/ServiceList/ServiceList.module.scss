@@ -34,12 +34,13 @@
         background-color: $color-blur-light;
         border-radius: 20px;
         gap: 5%;
-        padding: 3% 5%;
         margin-bottom: 2%;
         cursor: pointer;
         transition: all 0.3s;
+        border: 7px solid $color-blur-light !important;
+        padding: 2.2% 4%;
         &:hover {
-          background-color: transparent;
+          background-color: transparent !important;
         }
         img {
           height: auto;

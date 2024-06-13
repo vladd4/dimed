@@ -1,5 +1,10 @@
-import { Circle } from "lucide-react";
+"use client";
+
+import { Circle, Trash2 } from "lucide-react";
 import styles from "./WhatDo.module.scss";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
+import { useEffect } from "react";
+import { fetchServices } from "@/redux/slices/serviceSlice";
 
 const conditions_1 = [
   "Остеохондроз",
@@ -39,48 +44,93 @@ const conditions_3 = [
   "Біль в шиї",
 ];
 
-export default function WhatWeDo() {
+type WhatProps = {
+  isAdmin?: boolean;
+};
+
+export default function WhatWeDo({ isAdmin }: WhatProps) {
+  const { status, sugloby, hrebet, pain } = useAppSelector(
+    (state) => state.services
+  );
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchServices());
+  }, [dispatch]);
   return (
-    <section className={styles.root}>
-      <h2>Що ми лікуємо?</h2>
+    <section className={`${styles.root} ${isAdmin ? styles.admin_root : ""}`}>
+      {!isAdmin && <h2>Що ми лікуємо?</h2>}
       <article className={styles.cards_block}>
         <div className={styles.card}>
           <h2>Лікування захворювання хребта</h2>
           <div className={styles.card_list}>
-            {conditions_1.map((condition) => {
-              return (
-                <div key={condition} className={styles.list_item}>
-                  <Circle fill="#294273" color="#294273" size={11} />
-                  <p>{condition}</p>
-                </div>
-              );
-            })}
+            {status === "loaded" && hrebet !== null ? (
+              hrebet.map((condition) => {
+                return (
+                  <div key={condition} className={styles.list_item}>
+                    {isAdmin && <Trash2 className={styles.delete} size={20} />}
+                    <Circle fill="#294273" color="#294273" size={11} />
+                    <p>{condition}</p>
+                  </div>
+                );
+              })
+            ) : (
+              <p>Loading...</p>
+            )}
+            {isAdmin && (
+              <form className={styles.add_form}>
+                <input type="text" placeholder="Назва..." />
+                <button>Додати</button>
+              </form>
+            )}
           </div>
         </div>
         <div className={styles.card}>
           <h2>Лікування захворювань суглобів</h2>
           <div className={styles.card_list}>
-            {conditions_2.map((condition) => {
-              return (
-                <div key={condition} className={styles.list_item}>
-                  <Circle fill="#294273" color="#294273" size={11} />
-                  <p>{condition}</p>
-                </div>
-              );
-            })}
+            {status === "loaded" && sugloby !== null ? (
+              sugloby.map((condition) => {
+                return (
+                  <div key={condition} className={styles.list_item}>
+                    {isAdmin && <Trash2 className={styles.delete} size={20} />}
+                    <Circle fill="#294273" color="#294273" size={11} />
+                    <p>{condition}</p>
+                  </div>
+                );
+              })
+            ) : (
+              <p>Loading...</p>
+            )}
+            {isAdmin && (
+              <form className={styles.add_form}>
+                <input type="text" placeholder="Назва..." />
+                <button>Додати</button>
+              </form>
+            )}
           </div>
         </div>
         <div className={styles.card}>
           <h2>Лікування гострого та хронічного болю</h2>
           <div className={styles.card_list}>
-            {conditions_3.map((condition) => {
-              return (
-                <div key={condition} className={styles.list_item}>
-                  <Circle fill="#294273" color="#294273" size={11} />
-                  <p>{condition}</p>
-                </div>
-              );
-            })}
+            {status === "loaded" && pain !== null ? (
+              pain.map((condition) => {
+                return (
+                  <div key={condition} className={styles.list_item}>
+                    {isAdmin && <Trash2 className={styles.delete} size={20} />}
+                    <Circle fill="#294273" color="#294273" size={11} />
+                    <p>{condition}</p>
+                  </div>
+                );
+              })
+            ) : (
+              <p>Loading...</p>
+            )}
+            {isAdmin && (
+              <form className={styles.add_form}>
+                <input type="text" placeholder="Назва..." />
+                <button>Додати</button>
+              </form>
+            )}
           </div>
         </div>
       </article>

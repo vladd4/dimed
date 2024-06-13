@@ -11,7 +11,7 @@
   .doctor_list {
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     gap: 2%;
     row-gap: 25px;
@@ -27,9 +27,33 @@
   padding: 2% 0%;
   padding-bottom: 1%;
   color: $color-black;
-  img {
-    height: auto;
+  position: relative;
+  .admin_controls {
+    position: absolute;
+    right: 2%;
+    top: -1%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2%;
+    svg {
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        color: $color-dark-blue;
+      }
+      &:last-child {
+        &:hover {
+          color: red;
+        }
+      }
+    }
+  }
+  .image {
     width: 85%;
+    height: 500px;
+    background-size: cover;
   }
   .text_block {
     display: grid;
@@ -51,9 +75,37 @@
   width: 100% !important;
 }
 
+.admin_item {
+  width: 23%;
+}
+
+@media screen and (min-width: 1550px) {
+  .item_root {
+    .image {
+      height: 600px;
+    }
+  }
+}
+@media screen and (max-width: 1250px) {
+  .item_root {
+    .image {
+      height: 400px;
+    }
+  }
+}
+@media screen and (max-width: 1000px) {
+  .item_root {
+    .image {
+      height: 300px;
+    }
+  }
+}
 @media screen and (max-width: 800px) {
   .item_root {
     width: 49%;
+    .image {
+      height: 350px;
+    }
   }
 }
 @media screen and (max-width: 650px) {
@@ -67,6 +119,9 @@
     width: 100%;
     padding-top: 5%;
     padding-bottom: 3%;
+    .image {
+      height: 550px;
+    }
     .text_block {
       h2 {
         font-size: 18px;
@@ -74,6 +129,13 @@
       p {
         font-size: 15px;
       }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .item_root {
+    .image {
+      height: 450px;
     }
   }
 }

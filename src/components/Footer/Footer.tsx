@@ -35,13 +35,13 @@ export default function Footer() {
         <div className={styles.links_block}>
           <div>
             <h3>Пацієнту</h3>
-            <p>Послуги</p>
-            <p>Лікарі</p>
+            <Link href="/services">Послуги</Link>
+            <Link href="/doctors">Лікарі</Link>
           </div>
           <div>
             <h3>Про клініку</h3>
-            <p>Ліцензія та сертифікати</p>
-            <p>Про нас</p>
+            <Link href="/">Ліцензія та сертифікати</Link>
+            <Link href="/about">Про нас</Link>
           </div>
           <div className={styles.icons_block}>
             <div className={`${styles.icons_item} ${styles.clock}`}>

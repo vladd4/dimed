@@ -52,14 +52,12 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
                   }
                   key={service.label}
                   className={`${styles.card} ${
-                    isPricing ? styles.pricing_card : ""
-                  } ${
                     isPricing && isClickedPrice.includes(service.id)
                       ? styles.pricing_clicked
                       : ""
                   } ${
                     isClickedService === service.id
-                      ? styles.service_clicked
+                      ? styles.pricing_clicked
                       : ""
                   }`}
                 >
