@@ -1,5 +1,6 @@
 "use client";
 
+import AlertForm from "@/components/AlertForm/AlertForm";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 import DiseaseBlock from "@/components/DiseaseBlock/DiseaseBlock";
 import Footer from "@/components/Footer/Footer";
@@ -18,6 +19,7 @@ export default function DiseasePage() {
       <BreadCrumbs link_href={`/disease?id=${id}`} link_label={`${id}`} />
       <DiseaseBlock />
       <Footer />
+      <AlertForm />
     </main>
   );
 }

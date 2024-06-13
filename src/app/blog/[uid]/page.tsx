@@ -2,6 +2,7 @@
 
 import BlogDetails from "@/components/BlogDetails/BlogDetails";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
+import Footer from "@/components/Footer/Footer";
 import { useSearchParams } from "next/navigation";
 
 export default function BlogItemPage() {
@@ -15,6 +16,7 @@ export default function BlogItemPage() {
         isBlog
       />
       <BlogDetails />
+      <Footer />
     </main>
   );
 }

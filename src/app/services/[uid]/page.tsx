@@ -1,4 +1,5 @@
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
+import Footer from "@/components/Footer/Footer";
 import GaleryBlock from "@/components/GalerySlider/GaleryBlock";
 import ServiceApoint from "@/components/ServiceApoint/ServiceApoint";
 import ServiceBenefits from "@/components/ServiceBenefits/ServiceBenefits";
@@ -14,6 +15,7 @@ export default function ServDetails() {
       <ServiceBenefits />
       <GaleryBlock />
       <VideoComp />
+      <Footer />
     </main>
   );
 }

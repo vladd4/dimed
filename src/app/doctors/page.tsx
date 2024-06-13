@@ -1,3 +1,4 @@
+import AlertForm from "@/components/AlertForm/AlertForm";
 import DoctorsPage from "@/components/Doctors/DoctorsPage";
 import Footer from "@/components/Footer/Footer";
 import Hamburger from "@/components/Header/Hamburger";
@@ -10,6 +11,7 @@ export default function Doctors() {
       <Hamburger />
       <DoctorsPage />
       <Footer />
+      <AlertForm />
     </main>
   );
 }

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { X } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
 import { setShowBurger } from "@/redux/slices/hamburgerSlice";
+import { useEffect } from "react";
 
 const links = [
   {
@@ -41,6 +42,14 @@ export default function Hamburger() {
   const handleCloseBurger = () => {
     dispatch(setShowBurger(false));
   };
+
+  useEffect(() => {
+    if (showBurger) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [showBurger]);
 
   return (
     <article

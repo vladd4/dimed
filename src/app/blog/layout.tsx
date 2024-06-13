@@ -1,3 +1,4 @@
+import AlertForm from "@/components/AlertForm/AlertForm";
 import Footer from "@/components/Footer/Footer";
 import Hamburger from "@/components/Header/Hamburger";
 import Header from "@/components/Header/Header";
@@ -19,7 +20,8 @@ export default function BlogLayout({
         <Header />
         <Hamburger />
         {children}
-        <Footer />
+
+        <AlertForm />
       </body>
     </html>
   );

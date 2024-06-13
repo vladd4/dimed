@@ -1,3 +1,4 @@
+import AlertForm from "@/components/AlertForm/AlertForm";
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 import Footer from "@/components/Footer/Footer";
 import Hamburger from "@/components/Header/Hamburger";
@@ -12,6 +13,7 @@ export default function Pricing() {
       <BreadCrumbs link_href="/pricing" link_label="Ціни" />
       <ServiceList isPricing />
       <Footer />
+      <AlertForm />
     </main>
   );
 }
