@@ -64,3 +64,45 @@
     }
   }
 }
+@media screen and (max-width: 750px) {
+  .root {
+    .top_block {
+      flex-direction: column;
+      .text_block {
+        width: 100%;
+        margin-bottom: 2%;
+      }
+      img {
+        width: 100%;
+      }
+    }
+    .bottom_block {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 650px) {
+  .root {
+    width: 95%;
+    .top_block {
+      .text_block {
+        h2 {
+          font-size: 22px;
+        }
+        p {
+          font-size: 15px;
+        }
+      }
+    }
+    .bottom_block {
+      h2 {
+        font-size: 22px;
+      }
+      p {
+        font-size: 15px;
+      }
+    }
+  }
+}

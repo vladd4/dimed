@@ -17,6 +17,7 @@
     justify-content: flex-start;
     flex-direction: column;
     background: rgba(255, 255, 255, 0.54);
+    box-shadow: 4px 4px 20px 0px rgba(246, 245, 244, 0.62);
     border-radius: 50px;
     padding: 5% 4%;
     color: $color-black;
@@ -72,7 +73,7 @@
 
 @media screen and (max-width: 650px) {
   .root {
-    margin-top: 12%;
+    margin-top: 13%;
     border-radius: 10px;
     width: 85%;
     flex-direction: column;
@@ -94,10 +95,11 @@
   }
   .mobile_btn {
     display: block;
+    padding: 4% 5%;
   }
 }
 @media screen and (max-width: 500px) {
   .root {
-    margin-top: 15%;
+    margin-top: 17%;
   }
 }

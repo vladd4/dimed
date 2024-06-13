@@ -64,7 +64,7 @@
     }
     .phone_mobile {
       display: none;
-      width: 9%;
+      width: 10%;
       height: auto;
       cursor: pointer;
       transition: all 0.3s;
@@ -106,13 +106,13 @@
 }
 @media screen and (max-width: 500px) {
   .root {
-    padding: 3% 0%;
+    padding: 3.5% 0%;
     .wrapper {
       .phone_mobile {
-        width: 12%;
+        width: 14%;
       }
       a {
-        width: 25%;
+        width: 30%;
       }
     }
   }

@@ -9,6 +9,7 @@ import Phone from "@/../public/phone-icon.svg";
 import { useAppDispatch } from "../../hooks/redux-hooks";
 import { setShowAlert } from "@/redux/slices/alertSlice";
 import { AlignJustify } from "lucide-react";
+import { setShowBurger } from "@/redux/slices/hamburgerSlice";
 
 const links = [
   {
@@ -68,7 +69,11 @@ export default function Header() {
             src={Phone}
             onClick={() => dispatch(setShowAlert(true))}
           />
-          <AlignJustify className={styles.hamburger_icon} size={35} />
+          <AlignJustify
+            className={styles.hamburger_icon}
+            size={40}
+            onClick={() => dispatch(setShowBurger(true))}
+          />
         </div>
       </div>
     </header>
