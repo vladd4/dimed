@@ -5,6 +5,7 @@ import DoctorCard from "./DoctorCard";
 import styles from "./Doctors.module.scss";
 import { useEffect } from "react";
 import { fetchDoctors } from "@/redux/slices/doctorsSlice";
+import DoctorsLoader from "./DoctorsLoader";
 
 type ListProps = {
   isAdmin?: boolean;
@@ -20,25 +21,21 @@ export default function DoctorsList({ isAdmin }: ListProps) {
   return (
     <section className={styles.root}>
       <article className={styles.doctor_list}>
-        {doctorSlice.status === "loaded" && doctorSlice.doctors !== null ? (
-          doctorSlice.doctors.map((doctor) => {
-            return (
-              <DoctorCard
-                key={doctor.name}
-                name={doctor.name}
-                position={doctor.position}
-                image={doctor.image}
-                isAdmin={isAdmin}
-              />
-            );
-          })
-        ) : (
-          <p>Loading...</p>
-        )}
-        {/* <DoctorCard isAdmin />
-        <DoctorCard isAdmin />
-        <DoctorCard isAdmin />
-        <DoctorCard isAdmin /> */}
+        {doctorSlice.status === "loaded" && doctorSlice.doctors !== null
+          ? doctorSlice.doctors.map((doctor) => {
+              return (
+                <DoctorCard
+                  key={doctor.name}
+                  name={doctor.name}
+                  position={doctor.position}
+                  image={doctor.image}
+                  isAdmin={isAdmin}
+                />
+              );
+            })
+          : [...new Array(6)].map((_, index) => {
+              return <DoctorsLoader key={index} />;
+            })}
       </article>
     </section>
   );

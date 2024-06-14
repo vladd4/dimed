@@ -6,14 +6,22 @@ import styles from "./Slider.module.scss";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import DoctorCard from "../Doctors/DoctorCard";
+import DoctorsLoader from "../Doctors/DoctorsLoader";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
+import { fetchDoctors } from "@/redux/slices/doctorsSlice";
+import { useEffect } from "react";
 
 const DoctorsSlider = () => {
+  const dispatch = useAppDispatch();
+  const doctorSlice = useAppSelector((state) => state.doctors);
+
+  useEffect(() => {
+    dispatch(fetchDoctors());
+  }, [dispatch]);
   return (
     <Splide
       options={{
         height: "auto",
-        type: "loop",
-        focus: "center",
         drag: true,
         perPage: 3,
         gap: "2%",
@@ -23,33 +31,37 @@ const DoctorsSlider = () => {
         arrows: true,
         breakpoints: {
           850: {
-            perPage: 3,
+            perPage: 2,
           },
           650: {
-            pagination: false,
-            perPage: 2,
-            arrows: false,
+            perPage: 1,
           },
         },
       }}
       className={styles.slider}
       id="doctors-slider"
     >
-      {/* <SplideSlide>
-        <DoctorCard isFull />
-      </SplideSlide>
-      <SplideSlide>
-        <DoctorCard isFull />
-      </SplideSlide>
-      <SplideSlide>
-        <DoctorCard isFull />
-      </SplideSlide>
-      <SplideSlide>
-        <DoctorCard isFull />
-      </SplideSlide>
-      <SplideSlide>
-        <DoctorCard isFull />
-      </SplideSlide> */}
+      {doctorSlice.status === "loaded" && doctorSlice.doctors !== null
+        ? doctorSlice.doctors.map((doctor) => {
+            return (
+              <SplideSlide key={doctor.name}>
+                <DoctorCard
+                  key={doctor.name}
+                  name={doctor.name}
+                  position={doctor.position}
+                  image={doctor.image}
+                  isFull
+                />
+              </SplideSlide>
+            );
+          })
+        : [...new Array(6)].map((_, index) => {
+            return (
+              <SplideSlide key={index}>
+                <DoctorsLoader key={index} isFull />;
+              </SplideSlide>
+            );
+          })}
     </Splide>
   );
 };

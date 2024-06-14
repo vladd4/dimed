@@ -26,9 +26,6 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #a5a5a5;
 }
-#doctors-slider {
-  width: 100% !important;
-}
 #galery-slider {
   .splide__pagination {
     top: 102%;
@@ -62,7 +59,39 @@ body {
     left: 0em;
   }
 }
-
+#doctors-slider {
+  .splide__pagination {
+    top: 102%;
+    button {
+      background-color: transparent;
+      border: 1px solid #000;
+      border-radius: 50px;
+      width: 10px;
+      height: 10px;
+    }
+  }
+  .splide__pagination__page.is-active {
+    background-color: $color-dark-blue !important;
+    border: 1px solid $color-dark-blue !important;
+    transform: scale(1);
+  }
+  .splide__arrow {
+    background-color: transparent;
+    height: 4em;
+    width: 4em;
+    svg {
+      fill: $color-dark-blue !important;
+      height: 7em !important;
+      width: 7em !important;
+    }
+  }
+  .splide__arrow--next {
+    right: 0em;
+  }
+  .splide__arrow--prev {
+    left: 0em;
+  }
+}
 .loader {
   position: fixed;
   top: 0;

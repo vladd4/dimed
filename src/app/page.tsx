@@ -1,6 +1,7 @@
 import About from "@/components/About/About";
 import AlertForm from "@/components/AlertForm/AlertForm";
 import ContactForm from "@/components/ContactForm/ContactForm";
+import DoctorsSliderBlock from "@/components/DoctorsSlider/DoctorsSliderBlock";
 import Footer from "@/components/Footer/Footer";
 import Hamburger from "@/components/Header/Hamburger";
 import Header from "@/components/Header/Header";
@@ -18,9 +19,9 @@ export default function Home() {
       <WhatWeDo />
       <Services />
       <ContactForm />
+      <DoctorsSliderBlock />
       <Footer />
       <AlertForm />
-      {/* <DoctorsSliderBlock /> */}
     </main>
   );
 }

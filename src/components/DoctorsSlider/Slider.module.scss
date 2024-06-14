@@ -17,3 +17,19 @@
 .slider {
   width: 100% !important;
 }
+
+@media screen and (max-width: 650px) {
+  .root {
+    width: 95%;
+    margin: 5% 0%;
+    margin-bottom: 10%;
+    h2 {
+      font-size: 22px;
+    }
+  }
+}
+@media screen and (max-width: 450px) {
+  .slider {
+    width: 90% !important;
+  }
+}

@@ -3,8 +3,9 @@ import "../styles/globals.scss";
 import ReduxProvider from "@/redux/ReduxProvider";
 
 export const metadata: Metadata = {
-  title: "DIMED",
-  description: "DIMED",
+  title: "Dimed - центр вертебрології та реабілітації у Вінниці",
+  description:
+    "Наша команда надає ряд послуг, а саме консультації невролога, вертебролога, сучасні високоінтенсивні фізіотерапевтичні процедури, якісний лікувальний масаж, комплексну індивідуально підібрану лікувальну фізкультуру.",
 };
 
 export default function RootLayout({
