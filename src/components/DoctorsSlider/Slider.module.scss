@@ -6,6 +6,7 @@
   display: grid;
   margin-bottom: 4%;
   place-items: center;
+  overflow: hidden;
   h2 {
     font-size: calc(#{$size}* 1.4);
     font-weight: 400;
@@ -31,5 +32,16 @@
 @media screen and (max-width: 450px) {
   .slider {
     width: 90% !important;
+  }
+}
+@media screen and (max-width: 400px) {
+  .slider {
+    margin-left: -5%;
+  }
+}
+@media screen and (max-width: 370px) {
+  .slider {
+    width: 80% !important;
+    margin-left: -12%;
   }
 }
