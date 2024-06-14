@@ -6,7 +6,7 @@ type ServiceItem = {
   name: string;
   description: string;
   whatDo: string[];
-  price: string[];
+  price: { name: string; price: string }[];
 };
 
 type PricingSlice = {
@@ -28,7 +28,7 @@ export const fetchPricingAll = createAsyncThunk(
     const serviceItems = data.docs.map((doc) => ({
       name: doc.get("name") as string,
       description: doc.get("description") as string,
-      price: doc.get("price") as string[],
+      price: doc.get("price") as { name: string; price: string }[],
       whatDo: doc.get("whatDo") as string[],
     })) as ServiceItem[];
 

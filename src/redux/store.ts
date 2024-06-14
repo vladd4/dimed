@@ -4,6 +4,7 @@ import hamburgerSlice from "./slices/hamburgerSlice";
 import doctorsSlice from "./slices/doctorsSlice";
 import serviceSlice from "./slices/serviceSlice";
 import pricingSlice from "./slices/pricingSlice";
+import aboutSlice from "./slices/aboutSlice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     doctors: doctorsSlice,
     services: serviceSlice,
     pricing: pricingSlice,
+    about: aboutSlice,
   },
 });
 

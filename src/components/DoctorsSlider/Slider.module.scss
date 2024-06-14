@@ -6,7 +6,6 @@
   display: grid;
   margin-bottom: 4%;
   place-items: center;
-  overflow: hidden;
   h2 {
     font-size: calc(#{$size}* 1.4);
     font-weight: 400;
@@ -24,6 +23,7 @@
     width: 95%;
     margin: 5% 0%;
     margin-bottom: 10%;
+    overflow: hidden;
     h2 {
       font-size: 22px;
     }

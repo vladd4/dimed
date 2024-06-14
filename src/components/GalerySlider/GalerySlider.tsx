@@ -10,9 +10,17 @@ import Image1 from "@/../public/фото1jpg.png";
 import Image2 from "@/../public/фото2.png";
 import Image3 from "@/../public/фото3.png";
 
-import d from "../../../public/фото1jpg.png";
 import Image from "next/image";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
+import { useEffect } from "react";
+import { fetchImages } from "@/redux/slices/aboutSlice";
 const GalerySlider = () => {
+  const { status, images } = useAppSelector((state) => state.about);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchImages());
+  }, []);
   return (
     <Splide
       options={{
@@ -38,24 +46,15 @@ const GalerySlider = () => {
       className={styles.slider}
       id="galery-slider"
     >
-      <SplideSlide>
-        <Image alt="Image" src={Image1} width={570} height={380} />
-      </SplideSlide>
-      <SplideSlide>
-        <Image alt="Image" src={Image2} width={570} height={380} />
-      </SplideSlide>
-      <SplideSlide>
-        <Image alt="Image" src={Image3} width={570} height={380} />
-      </SplideSlide>
-      <SplideSlide>
-        <Image alt="Image" src={Image1} width={570} height={380} />
-      </SplideSlide>
-      <SplideSlide>
-        <Image alt="Image" src={Image2} width={570} height={380} />
-      </SplideSlide>
-      <SplideSlide>
-        <Image alt="Image" src={Image3} width={570} height={380} />
-      </SplideSlide>
+      {status === "loaded" &&
+        images !== null &&
+        images.map((item) => {
+          return (
+            <SplideSlide key={item}>
+              <Image alt="Image" src={item} width={570} height={380} />
+            </SplideSlide>
+          );
+        })}
     </Splide>
   );
 };

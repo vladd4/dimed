@@ -19,7 +19,7 @@ const initialState: ServiceSlice = {
 export const fetchServices = createAsyncThunk(
   "services/fetchServices",
   async () => {
-    const collectionRef = collection(db, "diseases");
+    const collectionRef = collection(db, "disease");
     const data = await getDocs(collectionRef);
     let hrebet: string[] = [];
     let pain: string[] = [];

@@ -4,18 +4,28 @@ import Image from "next/image";
 import styles from "./ServiceList.module.scss";
 
 import { Circle } from "lucide-react";
-import { useState } from "react";
-import { services } from "@/static_store/services";
-
+import { useEffect, useState } from "react";
+import { service_icons } from "@/static_store/service_icons";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
+import { fetchPricingAll } from "@/redux/slices/pricingSlice";
+import ServImage from "@/../public/service-icons/consult.png";
+import ServiceLoader from "../Services/ServiceLoader";
 type ServiceListProps = {
   isPricing?: boolean;
 };
 
 export default function ServiceList({ isPricing }: ServiceListProps) {
-  const [isClickedPrice, setisClickedPrice] = useState<number[]>([]);
-  const [isClickedService, setisClickedService] = useState<number>(0);
+  const [isClickedPrice, setisClickedPrice] = useState<string[]>([]);
+  const [isClickedService, setisClickedService] = useState<string>("");
 
-  const handleShowTable = (id: number) => {
+  const { status, services } = useAppSelector((state) => state.pricing);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchPricingAll());
+  }, [dispatch]);
+
+  const handleShowTable = (id: string) => {
     setisClickedPrice((prev) => {
       if (prev.includes(id)) {
         return prev.filter((clickedId) => clickedId !== id);
@@ -25,9 +35,9 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
     });
   };
 
-  const handleShowServiceInfo = (id: number) => {
+  const handleShowServiceInfo = (id: string) => {
     if (isClickedService === id) {
-      setisClickedService(0);
+      setisClickedService("");
     } else {
       setisClickedService(id);
     }
@@ -41,105 +51,98 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
       </p>
       <article className={styles.list_block}>
         <div className={styles.list}>
-          {services.map((service) => {
-            return (
-              <>
-                <div
-                  onClick={
-                    isPricing
-                      ? () => handleShowTable(service.id)
-                      : () => handleShowServiceInfo(service.id)
-                  }
-                  key={service.label}
-                  className={`${styles.card} ${
-                    isPricing && isClickedPrice.includes(service.id)
-                      ? styles.pricing_clicked
-                      : ""
-                  } ${
-                    isClickedService === service.id
-                      ? styles.pricing_clicked
-                      : ""
-                  }`}
-                >
-                  <Image
-                    alt="Service"
-                    src={service.image}
-                    width={200}
-                    height={200}
-                  />
-                  <h2>{service.label}</h2>
-                </div>
-                {isPricing ? (
-                  <div
-                    className={`${styles.table} ${
-                      isClickedPrice.includes(service.id)
-                        ? styles.show_table
-                        : ""
-                    }`}
-                  >
-                    <div className={styles.table_item}>
-                      <p>Лікувальний (оздоровчий) масаж спини</p>
-                      <span>600 грн</span>
+          {status === "loaded" && services !== null
+            ? services.map((service) => {
+                let icon =
+                  service_icons.find((item) => item.name === service.name)
+                    ?.icon || ServImage;
+                return (
+                  <>
+                    <div
+                      onClick={
+                        isPricing
+                          ? () => handleShowTable(service.name)
+                          : () => handleShowServiceInfo(service.name)
+                      }
+                      key={service.name}
+                      className={`${styles.card} ${
+                        isPricing && isClickedPrice.includes(service.name)
+                          ? styles.pricing_clicked
+                          : ""
+                      } ${
+                        isClickedService === service.name
+                          ? styles.pricing_clicked
+                          : ""
+                      }`}
+                    >
+                      <Image
+                        alt="Service"
+                        src={icon}
+                        width={200}
+                        height={200}
+                      />
+                      <h2>{service.name}</h2>
                     </div>
-                    <div className={styles.table_item}>
-                      <p>Загальний оздоровчий масаж 90хв.</p>
-                      <span>800 грн</span>
-                    </div>
-                    <div className={styles.table_item}>
-                      <p>Лікувальний (оздоровчий) масаж спини</p>
-                      <span>600 грн</span>
-                    </div>
-                    <div className={styles.table_item}>
-                      <p>Загальний оздоровчий масаж 90хв.</p>
-                      <span>800 грн</span>
-                    </div>
-                    <div className={styles.table_item}>
-                      <p>Лікувальний (оздоровчий) масаж спини</p>
-                      <span>600 грн</span>
-                    </div>
-                    <div className={styles.table_item}>
-                      <p>Загальний оздоровчий масаж 90хв.</p>
-                      <span>800 грн</span>
-                    </div>
-                  </div>
-                ) : (
-                  <div
-                    className={`${styles.table} ${
-                      isClickedService === service.id
-                        ? styles.show_table_mobile
-                        : ""
-                    } ${styles.table_mobile}`}
-                  >
-                    {service.services.map((serv) => {
-                      return (
-                        <p className={styles.mobile_service} key={serv}>
-                          {serv}
-                        </p>
-                      );
-                    })}
-                  </div>
-                )}
-              </>
-            );
-          })}
+                    {isPricing ? (
+                      <div
+                        className={`${styles.table} ${
+                          isClickedPrice.includes(service.name)
+                            ? styles.show_table
+                            : ""
+                        }`}
+                      >
+                        {service.price.map((item) => {
+                          return (
+                            <div key={item.name} className={styles.table_item}>
+                              <p>{item.name}</p>
+                              <span>{item.price} грн</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <div
+                        className={`${styles.table} ${
+                          isClickedService === service.name
+                            ? styles.show_table_mobile
+                            : ""
+                        } ${styles.table_mobile}`}
+                      >
+                        {service.whatDo.map((serv) => {
+                          return (
+                            <p className={styles.mobile_service} key={serv}>
+                              {serv}
+                            </p>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </>
+                );
+              })
+            : [...new Array(6)].map((_, index) => (
+                <ServiceLoader key={index} />
+              ))}
         </div>
         {!isPricing && (
           <div
             className={`${styles.service_info} ${
-              isClickedService !== 0 ? styles.show_info : ""
+              isClickedService !== "" ? styles.show_info : ""
             }`}
           >
-            {services.map((item) => {
-              if (item.id === isClickedService) {
-                return item.services.map((serv) => (
-                  <div className={styles.list_item} key={serv}>
-                    <Circle fill="#294273" color="#294273" size={11} />
-                    <p>{serv}</p>
-                  </div>
-                ));
-              }
-              return null;
-            })}
+            {status === "loaded" &&
+              services !== null &&
+              services.map((item) => {
+                if (item.name === isClickedService) {
+                  return item.whatDo.map((serv) => (
+                    <div className={styles.list_item} key={serv}>
+                      <Circle fill="#294273" color="#294273" size={11} />
+                      <p>{serv}</p>
+                    </div>
+                  ));
+                }
+                return null;
+              })}
           </div>
         )}
       </article>

@@ -39,22 +39,14 @@ export default function Services() {
       <article className={styles.cards_block}>
         {status === "loaded" && services !== null
           ? services.map((service) => {
-              const icon = service_icons.map((item) => {
-                if (item.name === service.name) {
-                  return item.icon;
-                } else {
-                  return ServImage;
-                }
-              });
+              let icon =
+                service_icons.find((item) => item.name === service.name)
+                  ?.icon || ServImage;
+
               return (
-                <div className={styles.service_block}>
-                  <div key={service.name} className={styles.card}>
-                    <Image
-                      alt="Service"
-                      src={icon[0]}
-                      width={200}
-                      height={200}
-                    />
+                <div className={styles.service_block} key={service.name}>
+                  <div className={styles.card}>
+                    <Image alt="Service" src={icon} width={200} height={200} />
                     <h2>{service.name}</h2>
                     <p>{service.description}</p>
                     <p
@@ -74,21 +66,17 @@ export default function Services() {
                       isClickedService === service.name ? styles.show_list : ""
                     }`}
                   >
-                    {service.whatDo.map((serv) => {
-                      return (
-                        <div className={styles.list_item} key={service.name}>
-                          <Circle fill="#294273" color="#294273" size={11} />
-                          <p>{serv}</p>
-                        </div>
-                      );
-                    })}
+                    {service.whatDo.map((serv, index) => (
+                      <div className={styles.list_item} key={index}>
+                        <Circle fill="#294273" color="#294273" size={11} />
+                        <p>{serv}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               );
             })
-          : [...new Array(6)].map((_, index) => {
-              return <ServiceLoader key={index} />;
-            })}
+          : [...new Array(6)].map((_, index) => <ServiceLoader key={index} />)}
       </article>
     </section>
   );
