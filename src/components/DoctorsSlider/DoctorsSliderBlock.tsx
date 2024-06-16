@@ -1,4 +1,5 @@
 import DoctorsSlider from "./DoctorsSlider";
+
 import styles from "./Slider.module.scss";
 
 export default function DoctorsSliderBlock() {

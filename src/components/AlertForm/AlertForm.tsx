@@ -1,10 +1,14 @@
 "use client";
 
-import { X } from "lucide-react";
 import styles from "./AlertForm.module.scss";
+
+import { X } from "lucide-react";
+
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { setShowAlert } from "@/redux/slices/alertSlice";
-import { useEffect, useRef } from "react";
+
+import { useEffect, useRef, useState } from "react";
+
 import useClickOutside from "../../hooks/useClickOutside";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,7 +19,7 @@ import { FormValues, formSchema } from "@/formSchema";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useState } from "react";
+
 import { sendFormToTelegram } from "@/utils/sendFormToTelegram";
 
 export default function AlertForm() {

@@ -1,8 +1,11 @@
 import Image from "next/image";
+
 import styles from "./About.module.scss";
 
 import AboutImage from "@/../public/Group 5.png";
+
 import Link from "next/link";
+
 import { MoveRight } from "lucide-react";
 
 export default function About() {

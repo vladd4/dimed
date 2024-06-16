@@ -1,16 +1,20 @@
 "use client";
 
-import Image, { StaticImageData } from "next/image";
 import styles from "./Services.module.scss";
+
+import Image from "next/image";
+
 import { ChevronDown, ChevronUp, Circle } from "lucide-react";
-// import { services } from "@/static_store/services";
+
 import { useEffect, useState } from "react";
+
 import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
 import { fetchPricingAll } from "@/redux/slices/pricingSlice";
 
 import { service_icons } from "@/static_store/service_icons";
 
 import ServImage from "@/../public/service-icons/consult.png";
+
 import ServiceLoader from "./ServiceLoader";
 
 export default function Services() {

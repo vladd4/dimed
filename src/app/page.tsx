@@ -11,17 +11,13 @@ import WhatWeDo from "@/components/WhatWeDo/WhatWeDo";
 
 export default function Home() {
   return (
-    <main className="main">
-      <Header />
-      <Hamburger />
+    <>
       <Welcome />
       <About />
       <WhatWeDo />
       <Services />
       <ContactForm />
       <DoctorsSliderBlock />
-      <Footer />
-      <AlertForm />
-    </main>
+    </>
   );
 }

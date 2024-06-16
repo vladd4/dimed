@@ -1,4 +1,5 @@
 import { Circle } from "lucide-react";
+
 import styles from "./ServBenefits.module.scss";
 
 export default function ServiceBenefits() {

@@ -1,4 +1,5 @@
 import GalerySlider from "./GalerySlider";
+
 import styles from "./GalerySlider.module.scss";
 
 export default function GaleryBlock() {

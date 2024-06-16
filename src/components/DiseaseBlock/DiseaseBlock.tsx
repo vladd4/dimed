@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import styles from "./Disease.module.scss";
 
 import Image1 from "@/../public/image 21.png";

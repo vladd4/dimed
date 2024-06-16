@@ -1,6 +1,6 @@
 import { db } from "@/firebase";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { QueryDocumentSnapshot, collection, getDocs } from "firebase/firestore";
+import {  collection, getDocs } from "firebase/firestore";
 
 type ServiceItem = {
   name: string;

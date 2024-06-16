@@ -1,11 +1,14 @@
 "use client";
 
-import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
-import DoctorCard from "./DoctorCard";
 import styles from "./Doctors.module.scss";
-import { useEffect } from "react";
+
+import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
 import { fetchDoctors } from "@/redux/slices/doctorsSlice";
+
+import DoctorCard from "./DoctorCard";
 import DoctorsLoader from "./DoctorsLoader";
+
+import { useEffect } from "react";
 
 type ListProps = {
   isAdmin?: boolean;

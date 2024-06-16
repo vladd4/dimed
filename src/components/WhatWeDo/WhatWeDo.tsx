@@ -1,48 +1,13 @@
 "use client";
 
-import { Circle, Trash2 } from "lucide-react";
 import styles from "./WhatDo.module.scss";
-import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
+
+import { Circle, Trash2 } from "lucide-react";
+
 import { useEffect } from "react";
+
 import { fetchServices } from "@/redux/slices/serviceSlice";
-
-const conditions_1 = [
-  "Остеохондроз",
-  "Кили (грижі) міжхребцевих дисків",
-  "Протрузії міжхребцевих дисків",
-  "Спондилоартроз",
-  "Спондилолістез (зміщення) хребців",
-  "Радикулопатія",
-  "Цервікалгія",
-  "Торакалгія",
-  "Люмбалгія",
-  "Патологічні деформації хребта",
-  "Реабілітація після переломів",
-  "Реабілітація після спортивних травм",
-];
-
-const conditions_2 = [
-  "Остеопороз",
-  "Артрози (гонартроз, коксартроз)",
-  "Артрит",
-  "Бурсит",
-  "Контрактури",
-  "Подагра",
-  "Тендиніти",
-  "Плантарний фасциїт",
-  "П'яткова шпора",
-  "Реабілітація після переломів",
-  "Реабілітація після спортивних травм",
-];
-
-const conditions_3 = [
-  "Головний біль, головокружіння, запаморочення",
-  "Тунельний синдром",
-  "Невралгія лицевого нерву",
-  "Міжреберна невралгія",
-  "Біль в спині",
-  "Біль в шиї",
-];
+import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
 
 type WhatProps = {
   isAdmin?: boolean;

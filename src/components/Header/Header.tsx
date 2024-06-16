@@ -1,42 +1,21 @@
 "use client";
 
 import Image from "next/image";
+
 import styles from "./Header.module.scss";
+
 import Link from "next/link";
 
 import Logo from "@/../public/logo-black.png";
 import Phone from "@/../public/phone-icon.svg";
+
 import { useAppDispatch } from "../../hooks/redux-hooks";
 import { setShowAlert } from "@/redux/slices/alertSlice";
-import { AlignJustify } from "lucide-react";
 import { setShowBurger } from "@/redux/slices/hamburgerSlice";
 
-const links = [
-  {
-    label: "Послуги",
-    href: "/services",
-  },
-  {
-    label: "Ціна",
-    href: "/pricing",
-  },
-  {
-    label: "Про нас",
-    href: "/about",
-  },
-  {
-    label: "Блог",
-    href: "/blog",
-  },
-  {
-    label: "Лікарі",
-    href: "/doctors",
-  },
-  {
-    label: "Контакти",
-    href: "/#contacts",
-  },
-];
+import { AlignJustify } from "lucide-react";
+
+import { links } from "@/static_store/header_links";
 
 export default function Header() {
   const dispatch = useAppDispatch();

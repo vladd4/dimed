@@ -1,11 +1,6 @@
 import { db } from "@/firebase";
-import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import {
-  DocumentData,
-  QueryDocumentSnapshot,
-  collection,
-  getDocs,
-} from "firebase/firestore";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { QueryDocumentSnapshot, collection, getDocs } from "firebase/firestore";
 
 type DoctorCard = {
   name: string;

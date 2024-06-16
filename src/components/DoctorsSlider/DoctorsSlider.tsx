@@ -5,10 +5,13 @@ import styles from "./Slider.module.scss";
 // @ts-ignore
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
+
 import DoctorCard from "../Doctors/DoctorCard";
 import DoctorsLoader from "../Doctors/DoctorsLoader";
+
 import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
 import { fetchDoctors } from "@/redux/slices/doctorsSlice";
+
 import { useEffect } from "react";
 
 const DoctorsSlider = () => {

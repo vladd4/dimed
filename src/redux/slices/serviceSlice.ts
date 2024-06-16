@@ -27,7 +27,6 @@ export const fetchServices = createAsyncThunk(
 
     data.docs.forEach((doc: QueryDocumentSnapshot) => {
       const disease = doc;
-      console.log(disease);
       if (disease.id === "hrebet") {
         hrebet = disease.data().values as string[];
       }

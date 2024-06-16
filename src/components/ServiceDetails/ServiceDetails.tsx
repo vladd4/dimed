@@ -1,7 +1,9 @@
 import Image from "next/image";
+
 import styles from "./ServiceDetails.module.scss";
 
 import Photo from "@/../public/фото масаж2 1.png";
+
 import { CircleCheck, CircleX } from "lucide-react";
 
 export default function ServiceDetails() {

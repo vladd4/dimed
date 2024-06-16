@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
+
 import styles from "./AboutExtended.module.scss";
 
 import AboutImage from "@/../public/about-image.png";
-
 import AboutIcon1 from "@/../public/free-icon-knee-joint-2047496.png";
 import AboutIcon2 from "@/../public/free-icon-spine-4885861.png";
 import AboutIcon3 from "@/../public/free-icon-muscle-5877976 1.png";
+
 import { useAppDispatch } from "@/hooks/redux-hooks";
 import { setShowAlert } from "@/redux/slices/alertSlice";
 

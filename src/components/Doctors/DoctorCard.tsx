@@ -1,4 +1,5 @@
 import styles from "./Doctors.module.scss";
+
 import { Pencil, Trash2 } from "lucide-react";
 
 type CardProps = {

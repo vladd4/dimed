@@ -1,6 +1,7 @@
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
-import styles from "./Blog.module.scss";
 import BlogItem from "./BlogItem";
+
+import styles from "./Blog.module.scss";
 
 export default function BlogPage() {
   return (

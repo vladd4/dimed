@@ -10,9 +10,5 @@ export default function PricingLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="uk">
-      <body>{children}</body>
-    </html>
-  );
+  return <>{children}</>;
 }

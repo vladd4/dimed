@@ -1,15 +1,22 @@
 "use client";
 
 import Image from "next/image";
+
 import styles from "./ServiceList.module.scss";
 
 import { Circle } from "lucide-react";
+
 import { useEffect, useState } from "react";
+
 import { service_icons } from "@/static_store/service_icons";
+
 import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
 import { fetchPricingAll } from "@/redux/slices/pricingSlice";
+
 import ServImage from "@/../public/service-icons/consult.png";
-import ServiceLoader from "../Services/ServiceLoader";
+
+import ServiceListLoader from "./ServiceListLoader";
+
 type ServiceListProps = {
   isPricing?: boolean;
 };
@@ -121,7 +128,7 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
                 );
               })
             : [...new Array(6)].map((_, index) => (
-                <ServiceLoader key={index} />
+                <ServiceListLoader key={index} />
               ))}
         </div>
         {!isPricing && (

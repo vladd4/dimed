@@ -6,14 +6,13 @@ import styles from "./GalerySlider.module.scss";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 
-import Image1 from "@/../public/фото1jpg.png";
-import Image2 from "@/../public/фото2.png";
-import Image3 from "@/../public/фото3.png";
-
 import Image from "next/image";
+
 import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
-import { useEffect } from "react";
 import { fetchImages } from "@/redux/slices/aboutSlice";
+
+import { useEffect } from "react";
+
 const GalerySlider = () => {
   const { status, images } = useAppSelector((state) => state.about);
   const dispatch = useAppDispatch();

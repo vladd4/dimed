@@ -1,39 +1,17 @@
 "use client";
 
 import styles from "./Hamburger.module.scss";
+
 import Link from "next/link";
 
 import { X } from "lucide-react";
+
 import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
 import { setShowBurger } from "@/redux/slices/hamburgerSlice";
+
 import { useEffect } from "react";
 
-const links = [
-  {
-    label: "Послуги",
-    href: "/services",
-  },
-  {
-    label: "Ціна",
-    href: "/pricing",
-  },
-  {
-    label: "Про нас",
-    href: "/about",
-  },
-  {
-    label: "Блог",
-    href: "/blog",
-  },
-  {
-    label: "Лікарі",
-    href: "/doctors",
-  },
-  {
-    label: "Контакти",
-    href: "/#contacts",
-  },
-];
+import { links } from "@/static_store/header_links";
 
 export default function Hamburger() {
   const { showBurger } = useAppSelector((state) => state.hamburger);

@@ -1,5 +1,7 @@
 import Link from "next/link";
+
 import styles from "./BreadCrumbs.module.scss";
+
 import { MoveRight } from "lucide-react";
 
 type BreadCrumbsProps = {

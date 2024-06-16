@@ -1,4 +1,5 @@
 import ContentLoader from "react-content-loader";
+
 import styles from "./Doctors.module.scss";
 
 type LoaderProps = {

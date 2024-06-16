@@ -1,12 +1,14 @@
 import Image from "next/image";
+
 import styles from "./Footer.module.scss";
 
 import Logo from "@/../public/logo-black.png";
-
 import Face from "@/../public/face.png";
 import Insta from "@/../public/insta.png";
 import Teleg from "@/../public/teleg.png";
+
 import { Clock, MapPin, Phone } from "lucide-react";
+
 import Link from "next/link";
 
 export default function Footer() {

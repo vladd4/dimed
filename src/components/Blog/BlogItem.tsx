@@ -1,8 +1,11 @@
 import Image from "next/image";
+
 import styles from "./Blog.module.scss";
 
 import BlogImage from "@/../public/blog-image.png";
+
 import Link from "next/link";
+
 import { MoveRight } from "lucide-react";
 
 type BlogItemProps = {
