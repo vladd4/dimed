@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import styles from "./About.module.scss";
 
-import AboutImage from "@/../public/Group 5.png";
+import AboutImage from "@/../public/Group-5.webp";
 
 import Link from "next/link";
 
