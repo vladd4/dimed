@@ -93,16 +93,18 @@ export default function ContactForm() {
                 type="radio"
                 onChange={() => setMsgType("viber")}
                 checked={msgType === "viber"}
+                id="viber"
               />
-              <p>Напишіть мені у Viber</p>
+              <label htmlFor="viber">Напишіть мені у Viber</label>
             </div>
             <div className={styles.radio_input}>
               <input
                 type="radio"
                 onChange={() => setMsgType("подзвонити")}
                 checked={msgType === "подзвонити"}
+                id="podzvoni"
               />
-              <p>Подзвоніть мені</p>
+              <label htmlFor="podzvoni">Подзвоніть мені</label>
             </div>
           </div>
           <button type="submit">Залишити заявку</button>
