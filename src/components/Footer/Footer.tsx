@@ -23,13 +23,21 @@ export default function Footer() {
           <p>Безопераційне відновлення хребта та суглобів</p>
           <p>Центр вертебрології</p>
           <div className={styles.socials}>
-            <a href="https://sdsd">
+            <a href="https://sdsd" target="_blank" rel="noreferrer">
               <Image alt="Facebook" src={Face} width={41} height={41} />
             </a>
-            <a href="https://sdsd">
+            <a
+              href="https://www.instagram.com/holovatyi_rehab?igsh=OHg2MWVmcHk1d29p"
+              target="_blank"
+              rel="noreferrer"
+            >
               <Image alt="Instagram" src={Insta} width={41} height={41} />
             </a>
-            <a href="https://sdsd">
+            <a
+              href="https://t.me/+380979914203"
+              target="_blank"
+              rel="noreferrer"
+            >
               <Image alt="Telegram" src={Teleg} width={41} height={41} />
             </a>
           </div>
