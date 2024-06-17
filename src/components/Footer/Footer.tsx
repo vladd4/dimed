@@ -49,11 +49,16 @@ export default function Footer() {
             <div className={`${styles.icons_item} ${styles.clock}`}>
               <Clock size={20} /> <p>Пн-Нд: 09:00 - 21:00</p>
             </div>
-            <a href="https'/sd" className={styles.icons_item}>
+            <a
+              href="https://maps.app.goo.gl/Ew1X61V2GqnFycMK9"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.icons_item}
+            >
               <MapPin size={20} />
               <p>м. Вінниця, вул. Миколи Оводова, 93 </p>
             </a>
-            <a href="https'/sd" className={styles.icons_item}>
+            <a href="tel:+380979914203" className={styles.icons_item}>
               <Phone size={20} /> <p>+38 (097) 991 42 03</p>
             </a>
           </div>
