@@ -66,6 +66,22 @@
     }
   }
 }
+
+@media screen and (max-width: 900px) {
+  .root {
+    .label {
+      width: 75%;
+      text-align: center;
+    }
+    p {
+      width: 75%;
+    }
+    .button_block {
+      width: 75%;
+    }
+  }
+}
+
 @media screen and (max-width: 650px) {
   .root {
     width: 95%;

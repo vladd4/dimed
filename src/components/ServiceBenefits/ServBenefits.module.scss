@@ -41,10 +41,16 @@
 }
 @media screen and (max-width: 900px) {
   .root {
+    flex-direction: column;
+    row-gap: 25px;
     .text_block {
       h2 {
         max-width: 100%;
+        text-align: center;
       }
+      width: 100%;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
@@ -52,15 +58,9 @@
   .root {
     width: 95%;
     margin-bottom: 7%;
-    flex-direction: column;
-    row-gap: 25px;
     .text_block {
-      width: 100%;
-      align-items: center;
-      justify-content: center;
       h2 {
         max-width: 100%;
-        text-align: center;
         font-size: 22px;
       }
       .text_item {

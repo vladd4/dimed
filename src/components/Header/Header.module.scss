@@ -82,6 +82,19 @@
   }
 }
 
+@media screen and (max-width: 900px) {
+  .root {
+    .wrapper {
+      nav {
+        width: 60%;
+      }
+      a {
+        width: 16%;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 650px) {
   .root {
     padding: 2% 0%;

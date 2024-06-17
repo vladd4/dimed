@@ -3,9 +3,11 @@
 .root {
   width: 90%;
   margin: 1% 0%;
-  display: grid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   margin-bottom: 4%;
-  place-items: center;
   h2 {
     font-size: calc(#{$size}* 1.4);
     font-weight: 400;

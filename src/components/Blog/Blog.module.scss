@@ -68,6 +68,9 @@
 @media screen and (max-width: 900px) {
   .item_root {
     border-radius: 20px;
+    img {
+      width: 50%;
+    }
     .text_block {
       h2 {
         margin-bottom: 0%;

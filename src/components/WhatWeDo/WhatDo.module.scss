@@ -108,6 +108,18 @@
   margin-top: 2%;
 }
 
+@media screen and (max-width: 900px) {
+  .root {
+    .cards_block {
+      flex-wrap: wrap;
+      .card {
+        width: 48%;
+        margin-bottom: 3%;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 650px) {
   .root {
     width: 95%;
@@ -115,10 +127,8 @@
       font-size: 22px;
     }
     .cards_block {
-      flex-wrap: wrap;
       .card {
         width: 100%;
-        margin-bottom: 3%;
         h2 {
           font-size: 17px;
         }

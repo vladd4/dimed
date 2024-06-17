@@ -37,10 +37,11 @@
     }
   }
 }
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 900px) {
   .root {
     flex-wrap: wrap;
     row-gap: 15px;
+    align-items: stretch;
     .card_item {
       width: 44%;
     }

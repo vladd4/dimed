@@ -33,7 +33,7 @@ const DoctorsSlider = () => {
         pagination: true,
         arrows: true,
         breakpoints: {
-          850: {
+          800: {
             perPage: 2,
           },
           650: {
