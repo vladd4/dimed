@@ -8,7 +8,11 @@ import VideoComp from "@/components/VideoComponent/VideoComp";
 export default function ServDetails() {
   return (
     <>
-      <BreadCrumbs link_href="/services" link_label="Назва послуги" />
+      <BreadCrumbs
+        link_href="/services"
+        link_label="Назва послуги"
+        isServices
+      />
       <ServiceDetails />
       <ServiceApoint />
       <ServiceBenefits />

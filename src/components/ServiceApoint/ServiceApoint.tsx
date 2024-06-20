@@ -1,6 +1,11 @@
+"use client";
+
+import { useAppDispatch } from "@/hooks/redux-hooks";
 import styles from "./ServiceApoint.module.scss";
+import { setShowAlert } from "@/redux/slices/alertSlice";
 
 export default function ServiceApoint() {
+  const dispatch = useAppDispatch();
   return (
     <section className={styles.root}>
       <p className={styles.label}>
@@ -9,16 +14,15 @@ export default function ServiceApoint() {
       <p>
         Звертаючись до нашого центру DIMED у Вінниці, ви можете розраховувати на
         індивідуальний підхід, який враховує ваші потреби та проблеми зі
-        здоров'ям. Наші кваліфіковані фахівці з масажу зроблять все можливе, щоб
-        забезпечити вам максимальний комфорт та позитивний результат від
-        лікувального масажу.
+        здоров'ям.
       </p>
       <div className={styles.button_block}>
         <div>
           <p>Лікувальний масаж</p>
-          <span>300 грн</span>
         </div>
-        <button>Записатись на прийом</button>
+        <button onClick={() => dispatch(setShowAlert(true))} id="open-alert">
+          Записатись на прийом
+        </button>
       </div>
     </section>
   );

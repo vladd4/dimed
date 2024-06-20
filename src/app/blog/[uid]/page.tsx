@@ -11,7 +11,7 @@ export default function BlogItemPage() {
     <>
       <BreadCrumbs
         link_href={`/blog/blog-item/id=${id}`}
-        link_label={`Назва статті ${id}`}
+        link_label={`${id}`}
         isBlog
       />
       <BlogDetails />

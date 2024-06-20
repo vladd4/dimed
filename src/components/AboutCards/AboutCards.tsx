@@ -1,4 +1,10 @@
+"use client";
+
+import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
 import styles from "./AboutCards.module.scss";
+import { useEffect } from "react";
+import { fetchNumbers } from "@/redux/slices/aboutSlice";
+import CardsLoader from "./CardsLoader";
 
 const number_cards = [
   {
@@ -28,17 +34,26 @@ const number_cards = [
 ];
 
 export default function AboutCards() {
+  const dispatch = useAppDispatch();
+  const { status, numberCards } = useAppSelector((state) => state.about);
+
+  useEffect(() => {
+    dispatch(fetchNumbers());
+  }, [dispatch]);
+
   return (
     <section className={styles.root}>
-      {number_cards.map((card) => {
-        return (
-          <div key={card.number} className={styles.card_item}>
-            <span>{card.number}</span>
-            <p className={styles.lable}>{card.label}</p>
-            <p>{card.description}</p>
-          </div>
-        );
-      })}
+      {status === "loaded" && numberCards !== null
+        ? numberCards.map((card) => {
+            return (
+              <div key={card.number} className={styles.card_item}>
+                <span>{`0${card.number}`}</span>
+                <p className={styles.lable}>{card.heading}</p>
+                <p>{card.description}</p>
+              </div>
+            );
+          })
+        : [...new Array(4)].map((_, index) => <CardsLoader key={index} />)}
     </section>
   );
 }

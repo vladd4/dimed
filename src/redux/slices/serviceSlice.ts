@@ -6,6 +6,7 @@ type ServiceSlice = {
   hrebet: string[] | null;
   pain: string[] | null;
   sugloby: string[] | null;
+  serviceLabel: string;
   status: "loading" | "loaded";
 };
 
@@ -13,6 +14,8 @@ const initialState: ServiceSlice = {
   hrebet: null,
   pain: null,
   sugloby: null,
+  serviceLabel:
+    "Nam sed laoreet est. Fusce a porttitor sapien. Nunc egestas feugiat placerat.Aenean ac bibendum leo, vitae fringilla tellus!!!!!!!.",
   status: "loading",
 };
 
@@ -42,6 +45,23 @@ export const fetchServices = createAsyncThunk(
   }
 );
 
+export const fetchServiceLabel = createAsyncThunk(
+  "services/fetchServiceLabel",
+  async () => {
+    const collectionRef = collection(db, "service-label");
+    const querySnapshot = await getDocs(collectionRef);
+
+    if (!querySnapshot.empty) {
+      const documentData = querySnapshot.docs[0].data();
+      const label = documentData.label;
+
+      return label;
+    } else {
+      throw new Error("No document found in 'service-label' collection.");
+    }
+  }
+);
+
 export const serviceSlice = createSlice({
   name: "services",
   initialState,
@@ -66,6 +86,10 @@ export const serviceSlice = createSlice({
         state.pain = null;
         state.sugloby = null;
         state.status = "loading";
+      })
+      .addCase(fetchServiceLabel.fulfilled, (state, action) => {
+        state.serviceLabel = action.payload;
+        state.status = "loaded";
       });
   },
 });

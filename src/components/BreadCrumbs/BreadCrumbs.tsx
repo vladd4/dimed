@@ -8,12 +8,14 @@ type BreadCrumbsProps = {
   link_label: string;
   link_href: string;
   isBlog?: boolean;
+  isServices?: boolean;
 };
 
 export default function BreadCrumbs({
   link_label,
   link_href,
   isBlog,
+  isServices,
 }: BreadCrumbsProps) {
   return (
     <section className={styles.root}>
@@ -22,6 +24,12 @@ export default function BreadCrumbs({
       {isBlog && (
         <>
           <Link href="/blog">Блог</Link>
+          <MoveRight />
+        </>
+      )}
+      {isServices && (
+        <>
+          <Link href="/services">Послуги</Link>
           <MoveRight />
         </>
       )}

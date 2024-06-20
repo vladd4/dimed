@@ -37,11 +37,12 @@
       border-radius: 10px;
       background-color: $color-blur-light;
       padding: 4% 5%;
-      justify-content: space-between;
+      justify-content: center;
       margin-bottom: 3%;
       p {
         font-size: calc(#{$size}/ 1.4);
         margin: 0;
+        text-align: center;
       }
       span {
         font-weight: 800;

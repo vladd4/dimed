@@ -16,6 +16,7 @@ import { service_icons } from "@/static_store/service_icons";
 import ServImage from "@/../public/service-icons/consult.png";
 
 import ServiceLoader from "./ServiceLoader";
+import { fetchServiceLabel } from "@/redux/slices/serviceSlice";
 
 export default function Services() {
   const [isClickedService, setisClickedService] = useState<string>("");
@@ -28,18 +29,17 @@ export default function Services() {
     }
   };
   const { services, status } = useAppSelector((state) => state.pricing);
+  const { serviceLabel } = useAppSelector((state) => state.services);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchPricingAll());
+    dispatch(fetchServiceLabel());
   }, [dispatch]);
   return (
     <section className={styles.root}>
       <h2>Послуги</h2>
-      <p>
-        Nam sed laoreet est. Fusce a porttitor sapien. Nunc egestas feugiat
-        placerat.Aenean ac bibendum leo, vitae fringilla tellus.: 
-      </p>
+      <p>{serviceLabel}</p>
       <article className={styles.cards_block}>
         {status === "loaded" && services !== null
           ? services.map((service) => {

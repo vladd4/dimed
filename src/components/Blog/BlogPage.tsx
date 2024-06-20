@@ -1,18 +1,33 @@
+"use client";
+
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
 import BlogItem from "./BlogItem";
 
 import styles from "./Blog.module.scss";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
+import { useEffect } from "react";
+import { fetchBlogs } from "@/redux/slices/blogSlice";
+import BlogLoader from "./BlogLoader";
 
 export default function BlogPage() {
+  const dispatch = useAppDispatch();
+  const { status, blogs } = useAppSelector((state) => state.blog);
+
+  useEffect(() => {
+    dispatch(fetchBlogs());
+  }, [dispatch]);
+
   return (
     <>
       <BreadCrumbs link_href="/blog" link_label="Блог" />
       <section className={styles.root}>
         <h2>Корисні статті</h2>
         <article className={styles.blog_list}>
-          <BlogItem id={1} />
-          <BlogItem id={2} />
-          <BlogItem id={3} />
+          {status === "loaded" && blogs !== null
+            ? blogs.map((blog) => {
+                return <BlogItem key={blog.heading_1} blog={blog} />;
+              })
+            : [...new Array(3)].map((_, index) => <BlogLoader key={index} />)}
         </article>
       </section>
     </>
