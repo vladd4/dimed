@@ -11,7 +11,7 @@ export default function DiseasePage() {
   return (
     <>
       <BreadCrumbs link_href={`/disease?id=${id}`} link_label={`${id}`} />
-      <DiseaseBlock />
+      <DiseaseBlock id={`${id}`} />
     </>
   );
 }

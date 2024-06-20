@@ -16,6 +16,7 @@ import { fetchPricingAll } from "@/redux/slices/pricingSlice";
 import ServImage from "@/../public/service-icons/consult.png";
 
 import ServiceListLoader from "./ServiceListLoader";
+import Link from "next/link";
 
 type ServiceListProps = {
   isPricing?: boolean;
@@ -26,6 +27,7 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
   const [isClickedService, setisClickedService] = useState<string>("");
 
   const { status, services } = useAppSelector((state) => state.pricing);
+  const { serviceLabel } = useAppSelector((state) => state.services);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -52,10 +54,7 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
   return (
     <section className={styles.root}>
       <h2>{isPricing ? "Ціни" : "Послуги"}</h2>
-      <p>
-        Nam sed laoreet est. Fusce a porttitor sapien. Nunc egestas feugiat
-        placerat.Aenean ac bibendum leo, vitae fringilla tellus.: 
-      </p>
+      <p>{serviceLabel}</p>
       <article className={styles.list_block}>
         <div className={styles.list}>
           {status === "loaded" && services !== null
@@ -117,9 +116,16 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
                       >
                         {service.whatDo.map((serv) => {
                           return (
-                            <p className={styles.mobile_service} key={serv}>
+                            <Link
+                              href={`/services/service?id=${serv}`}
+                              className={styles.mobile_service}
+                              key={serv}
+                              onClick={() =>
+                                sessionStorage.setItem("service-heading", serv)
+                              }
+                            >
                               {serv}
-                            </p>
+                            </Link>
                           );
                         })}
                       </div>
@@ -142,10 +148,17 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
               services.map((item) => {
                 if (item.name === isClickedService) {
                   return item.whatDo.map((serv) => (
-                    <div className={styles.list_item} key={serv}>
+                    <Link
+                      href={`/services/service?id=${serv}`}
+                      onClick={() =>
+                        sessionStorage.setItem("service-heading", serv)
+                      }
+                      className={styles.list_item}
+                      key={serv}
+                    >
                       <Circle fill="#294273" color="#294273" size={11} />
                       <p>{serv}</p>
-                    </div>
+                    </Link>
                   ));
                 }
                 return null;

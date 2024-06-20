@@ -4,7 +4,11 @@ import { useAppDispatch } from "@/hooks/redux-hooks";
 import styles from "./ServiceApoint.module.scss";
 import { setShowAlert } from "@/redux/slices/alertSlice";
 
-export default function ServiceApoint() {
+type AppointProps = {
+  id: string;
+};
+
+export default function ServiceApoint({ id }: AppointProps) {
   const dispatch = useAppDispatch();
   return (
     <section className={styles.root}>
@@ -18,7 +22,7 @@ export default function ServiceApoint() {
       </p>
       <div className={styles.button_block}>
         <div>
-          <p>Лікувальний масаж</p>
+          <p>{id}</p>
         </div>
         <button onClick={() => dispatch(setShowAlert(true))} id="open-alert">
           Записатись на прийом

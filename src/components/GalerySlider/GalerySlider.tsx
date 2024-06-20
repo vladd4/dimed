@@ -1,5 +1,6 @@
 "use client";
 
+import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
 import styles from "./GalerySlider.module.scss";
 
 // @ts-ignore
@@ -7,19 +8,24 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 
 import Image from "next/image";
-
-import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
+import { useEffect } from "react";
 import { fetchImages } from "@/redux/slices/aboutSlice";
 
-import { useEffect } from "react";
+type Props = {
+  images?: string[];
+  isAbout?: boolean;
+};
 
-const GalerySlider = () => {
-  const { status, images } = useAppSelector((state) => state.about);
+const GalerySlider = ({ images, isAbout }: Props) => {
   const dispatch = useAppDispatch();
+  const aboutSlice = useAppSelector((state) => state.about);
 
   useEffect(() => {
-    dispatch(fetchImages());
-  }, []);
+    if (isAbout) {
+      dispatch(fetchImages());
+    }
+  }, [dispatch]);
+
   return (
     <Splide
       options={{
@@ -45,15 +51,19 @@ const GalerySlider = () => {
       className={styles.slider}
       id="galery-slider"
     >
-      {status === "loaded" &&
-        images !== null &&
-        images.map((item) => {
-          return (
+      {isAbout
+        ? aboutSlice.images !== null &&
+          aboutSlice.images.map((image) => (
+            <SplideSlide key={image}>
+              <Image alt="Image" src={image} width={570} height={380} />
+            </SplideSlide>
+          ))
+        : images &&
+          images.map((item) => (
             <SplideSlide key={item}>
               <Image alt="Image" src={item} width={570} height={380} />
             </SplideSlide>
-          );
-        })}
+          ))}
     </Splide>
   );
 };

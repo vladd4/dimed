@@ -13,7 +13,7 @@ export default function About() {
       <WhatWeDo />
       <AboutCards />
       <Services />
-      <GaleryBlock />
+      <GaleryBlock isAbout />
     </>
   );
 }

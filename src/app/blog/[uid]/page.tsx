@@ -14,7 +14,7 @@ export default function BlogItemPage() {
         link_label={`${id}`}
         isBlog
       />
-      <BlogDetails />
+      <BlogDetails /> 
     </>
   );
 }

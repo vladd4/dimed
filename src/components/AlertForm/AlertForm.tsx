@@ -75,13 +75,6 @@ export default function AlertForm() {
     }
   }, [errors]);
 
-  // useClickOutside(
-  //   alertRef,
-  //   showAlert,
-  //   handleCloseForm,
-  //   document.querySelector("alert-open")
-  // );
-
   return (
     <>
       <ToastContainer />

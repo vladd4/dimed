@@ -8,6 +8,8 @@ import { useEffect } from "react";
 
 import { fetchServices } from "@/redux/slices/serviceSlice";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
+import Link from "next/link";
+import { fetchDisease } from "@/redux/slices/diseaseSlice";
 
 type WhatProps = {
   isAdmin?: boolean;
@@ -18,6 +20,10 @@ export default function WhatWeDo({ isAdmin }: WhatProps) {
     (state) => state.services
   );
   const dispatch = useAppDispatch();
+
+  const handleDiseaseClick = (cond: string) => {
+    sessionStorage.setItem("disease-heading", cond);
+  };
 
   useEffect(() => {
     dispatch(fetchServices());
@@ -32,11 +38,16 @@ export default function WhatWeDo({ isAdmin }: WhatProps) {
             {status === "loaded" && hrebet !== null ? (
               hrebet.map((condition) => {
                 return (
-                  <div key={condition} className={styles.list_item}>
+                  <Link
+                    href={`/diseases?id=${condition}`}
+                    key={condition}
+                    className={styles.list_item}
+                    onClick={() => handleDiseaseClick(condition)}
+                  >
                     {isAdmin && <Trash2 className={styles.delete} size={20} />}
                     <Circle fill="#294273" color="#294273" size={11} />
                     <p>{condition}</p>
-                  </div>
+                  </Link>
                 );
               })
             ) : (
@@ -56,11 +67,16 @@ export default function WhatWeDo({ isAdmin }: WhatProps) {
             {status === "loaded" && sugloby !== null ? (
               sugloby.map((condition) => {
                 return (
-                  <div key={condition} className={styles.list_item}>
+                  <Link
+                    href={`/diseases?id=${condition}`}
+                    key={condition}
+                    className={styles.list_item}
+                    onClick={() => handleDiseaseClick(condition)}
+                  >
                     {isAdmin && <Trash2 className={styles.delete} size={20} />}
                     <Circle fill="#294273" color="#294273" size={11} />
                     <p>{condition}</p>
-                  </div>
+                  </Link>
                 );
               })
             ) : (
@@ -80,11 +96,16 @@ export default function WhatWeDo({ isAdmin }: WhatProps) {
             {status === "loaded" && pain !== null ? (
               pain.map((condition) => {
                 return (
-                  <div key={condition} className={styles.list_item}>
+                  <Link
+                    href={`/diseases?id=${condition}`}
+                    key={condition}
+                    className={styles.list_item}
+                    onClick={() => handleDiseaseClick(condition)}
+                  >
                     {isAdmin && <Trash2 className={styles.delete} size={20} />}
                     <Circle fill="#294273" color="#294273" size={11} />
                     <p>{condition}</p>
-                  </div>
+                  </Link>
                 );
               })
             ) : (

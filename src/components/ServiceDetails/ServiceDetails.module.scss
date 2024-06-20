@@ -102,7 +102,10 @@
       }
     }
     .bottom_block {
+      flex-direction: column;
+
       .bottom_div {
+        width: 100%;
         h2 {
           font-size: 22px;
         }
