@@ -9,7 +9,6 @@ import { useEffect } from "react";
 import { fetchServices } from "@/redux/slices/serviceSlice";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
 import Link from "next/link";
-import { fetchDisease } from "@/redux/slices/diseaseSlice";
 
 type WhatProps = {
   isAdmin?: boolean;

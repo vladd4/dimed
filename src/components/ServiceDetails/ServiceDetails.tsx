@@ -26,7 +26,7 @@ export default function ServiceDetails({ id }: ServProps) {
           src={
             status === "loaded" && service_item !== null
               ? service_item.image
-              : Photo
+              : ""
           }
           width={940}
           height={630}
