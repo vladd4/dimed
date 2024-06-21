@@ -10,6 +10,12 @@ export const metadata: Metadata = {
   title: "Dimed - центр вертебрології та реабілітації у Вінниці",
   description:
     "Наша команда надає ряд послуг, а саме консультації невролога, вертебролога, сучасні високоінтенсивні фізіотерапевтичні процедури, якісний лікувальний масаж, комплексну індивідуально підібрану лікувальну фізкультуру.",
+  openGraph: {
+    title: "Dimed - центр вертебрології та реабілітації у Вінниці",
+    description:
+      "Наша команда надає ряд послуг, а саме консультації невролога, вертебролога, сучасні високоінтенсивні фізіотерапевтичні процедури, якісний лікувальний масаж, комплексну індивідуально підібрану лікувальну фізкультуру.",
+  },
+  metadataBase: new URL(""),
 };
 
 export default function RootLayout({
@@ -19,6 +25,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="uk">
+      <meta property="author" content="vladdonets" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, user-scalable=no"
+      />
+      <link rel="canonical" href="" />
       <body>
         <ReduxProvider>
           <main className="main">
