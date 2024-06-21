@@ -4,8 +4,6 @@ import Image from "next/image";
 
 import styles from "./ServiceDetails.module.scss";
 
-import Photo from "@/../public/фото масаж2 1.png";
-
 import { CircleCheck, CircleX } from "lucide-react";
 import { useAppSelector } from "@/hooks/redux-hooks";
 
@@ -49,7 +47,7 @@ export default function ServiceDetails({ id }: ServProps) {
                 return (
                   <div key={item.name} className={styles.bottom_item}>
                     <CircleCheck
-                      size={50}
+                      size={35}
                       color="#294273"
                       fill="#ecf4ff"
                       className={styles.svg}
@@ -71,7 +69,7 @@ export default function ServiceDetails({ id }: ServProps) {
                 return (
                   <div key={item.name} className={styles.bottom_item}>
                     <CircleX
-                      size={35}
+                      size={40}
                       color="#ecf4ff"
                       fill="#294273"
                       style={{ marginTop: "-1%" }}

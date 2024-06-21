@@ -18,7 +18,7 @@ export default function ServiceBenefits() {
             service_item.benefits.map((item) => {
               return (
                 <div key={item.name} className={styles.text_item}>
-                  <Circle fill="#294273" color="#294273" size={15} />
+                  <Circle fill="#294273" color="#294273" size={10} />
                   <p>
                     <b>{item.name}: </b>
                     {item.description}
@@ -35,7 +35,7 @@ export default function ServiceBenefits() {
             service_item.effects.map((item) => {
               return (
                 <div key={item.name} className={styles.text_item}>
-                  <Circle fill="#294273" color="#294273" size={15} />
+                  <Circle fill="#294273" color="#294273" size={10} />
                   <p>
                     <b>{item.name}: </b>
                     {item.description}

@@ -28,7 +28,7 @@ export default function ServDetails() {
       {status === "loaded" &&
       service_item !== null &&
       service_item.paragraph === "" ? (
-        <h2>Опис послуги скоро з'явиться...</h2>
+        <h2 className="text">Опис послуги скоро з'явиться...</h2>
       ) : (
         <>
           <ServiceDetails id={`${id}`} />
