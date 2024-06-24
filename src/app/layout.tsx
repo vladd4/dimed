@@ -32,7 +32,6 @@ export default function RootLayout({
         <meta property="author" content="vladdonets" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="" />
-        <link rel="preload" href="/main-back.webp" as="image" />
       </head>
       <body>
         <ReduxProvider>
