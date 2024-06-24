@@ -10,10 +10,14 @@ export const metadata: Metadata = {
   title: "Dimed - центр вертебрології та реабілітації у Вінниці",
   description:
     "Наша команда надає ряд послуг, а саме консультації невролога, вертебролога, сучасні високоінтенсивні фізіотерапевтичні процедури, якісний лікувальний масаж, комплексну індивідуально підібрану лікувальну фізкультуру.",
+  // assets: ["https://dimed.vercel.app/"],
   openGraph: {
     title: "Dimed - центр вертебрології та реабілітації у Вінниці",
     description:
       "Наша команда надає ряд послуг, а саме консультації невролога, вертебролога, сучасні високоінтенсивні фізіотерапевтичні процедури, якісний лікувальний масаж, комплексну індивідуально підібрану лікувальну фізкультуру.",
+    type: "website",
+    siteName: "Dimed",
+    // url: "https://dimed.vercel.app/",
   },
 };
 
@@ -24,12 +28,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="uk">
-      <meta property="author" content="vladdonets" />
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, user-scalable=no"
-      />
-      <link rel="canonical" href="" />
+      <head>
+        <meta property="author" content="vladdonets" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="" />
+        <link rel="preload" href="/main-back.webp" as="image" />
+      </head>
       <body>
         <ReduxProvider>
           <main className="main">
