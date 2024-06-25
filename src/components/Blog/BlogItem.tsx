@@ -33,6 +33,7 @@ export default function BlogItem({ blog }: BlogItemProps) {
   const handleBlogClick = () => {
     window.sessionStorage.setItem("blog", JSON.stringify(blog));
   };
+
   return (
     <section className={styles.item_root}>
       <Image

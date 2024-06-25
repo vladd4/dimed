@@ -8,8 +8,6 @@ import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
 import { useEffect } from "react";
 import { fetchDisease } from "@/redux/slices/diseaseSlice";
 
-import Image1 from "@/../public/image 21.png";
-
 type DiseaseProps = {
   id: string;
 };
@@ -17,6 +15,8 @@ type DiseaseProps = {
 export default function DiseaseBlock({ id }: DiseaseProps) {
   const { status, disease } = useAppSelector((state) => state.disease);
   const dispatch = useAppDispatch();
+
+  const paragraphs = disease?.paragraph_2.split(". ");
 
   useEffect(() => {
     dispatch(fetchDisease(id));
@@ -49,8 +49,13 @@ export default function DiseaseBlock({ id }: DiseaseProps) {
           <div className={styles.bottom_block}>
             <h2>Профілактика і лікування</h2>
             <p>
-              {status === "loaded" && disease !== null
-                ? disease.paragraph_2
+              {status === "loaded" && paragraphs !== undefined
+                ? paragraphs.map((paragraph, index) => (
+                    <p key={index}>
+                      {paragraph}
+                      {index < paragraphs.length - 1 ? "." : ""}
+                    </p>
+                  ))
                 : "Loading..."}
             </p>
             {status === "loaded" && disease !== null && disease.image_2 && (

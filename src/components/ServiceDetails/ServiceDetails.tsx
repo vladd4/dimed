@@ -16,6 +16,8 @@ export default function ServiceDetails({ id }: ServProps) {
     (state) => state.serviceDetails
   );
 
+  const paragraphs = service_item?.paragraph.split(". ");
+
   return (
     <section className={styles.root}>
       <article className={styles.top_block}>
@@ -33,7 +35,13 @@ export default function ServiceDetails({ id }: ServProps) {
           <h2>{id}</h2>
           <p>
             {status === "loaded"
-              ? service_item !== null && service_item.paragraph
+              ? paragraphs !== undefined &&
+                paragraphs.map((paragraph, index) => (
+                  <p key={index}>
+                    {paragraph}
+                    {index < paragraphs.length - 1 ? "." : ""}
+                  </p>
+                ))
               : "Loading..."}
           </p>
         </div>

@@ -7,7 +7,6 @@ import styles from "./GalerySlider.module.scss";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 
-import Image from "next/image";
 import { useEffect } from "react";
 import { fetchImages } from "@/redux/slices/aboutSlice";
 
@@ -55,13 +54,19 @@ const GalerySlider = ({ images, isAbout }: Props) => {
         ? aboutSlice.images !== null &&
           aboutSlice.images.map((image) => (
             <SplideSlide key={image}>
-              <Image alt="Image" src={image} width={570} height={380} />
+              <div
+                className={styles.slider_div}
+                style={{ backgroundImage: `url(${image})` }}
+              />
             </SplideSlide>
           ))
         : images &&
           images.map((item) => (
             <SplideSlide key={item}>
-              <Image alt="Image" src={item} width={570} height={380} />
+              <div
+                className={styles.slider_div}
+                style={{ backgroundImage: `url(${item})` }}
+              />
             </SplideSlide>
           ))}
     </Splide>

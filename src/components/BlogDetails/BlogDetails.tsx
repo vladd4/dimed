@@ -6,6 +6,7 @@ import Image1 from "@/../public/фото3 1.png";
 
 export default function BlogDetails() {
   const blog = JSON.parse(window.sessionStorage.getItem("blog")!);
+
   return (
     <section className={styles.root}>
       <article className={styles.top_block}>

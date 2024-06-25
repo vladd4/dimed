@@ -45,7 +45,7 @@ const DoctorsSlider = () => {
       id="doctors-slider"
     >
       {doctorSlice.status === "loaded" && doctorSlice.doctors !== null
-        ? doctorSlice.doctors.map((doctor) => {
+        ? doctorSlice.doctors.slice(0, 6).map((doctor) => {
             return (
               <SplideSlide key={doctor.name}>
                 <DoctorCard
@@ -61,7 +61,7 @@ const DoctorsSlider = () => {
         : [...new Array(6)].map((_, index) => {
             return (
               <SplideSlide key={index}>
-                <DoctorsLoader key={index} isFull />;
+                <DoctorsLoader key={index} isFull />
               </SplideSlide>
             );
           })}
