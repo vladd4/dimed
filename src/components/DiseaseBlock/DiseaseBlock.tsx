@@ -17,6 +17,7 @@ export default function DiseaseBlock({ id }: DiseaseProps) {
   const dispatch = useAppDispatch();
 
   const paragraphs = disease?.paragraph_2.split("/n");
+  const paragraphs_1 = disease?.paragraph_1.split("/n");
 
   useEffect(() => {
     dispatch(fetchDisease(id));
@@ -32,8 +33,14 @@ export default function DiseaseBlock({ id }: DiseaseProps) {
             <div className={styles.text_block}>
               <h2>{id}</h2>
               <p>
-                {status === "loaded" && disease !== null
-                  ? disease.paragraph_1
+                {status === "loaded"
+                  ? paragraphs_1 !== undefined &&
+                    paragraphs_1.map((paragraph, index) => (
+                      <p
+                        key={index}
+                        dangerouslySetInnerHTML={{ __html: paragraph }}
+                      />
+                    ))
                   : "Loading..."}
               </p>
             </div>
