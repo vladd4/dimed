@@ -16,7 +16,7 @@ export default function DiseaseBlock({ id }: DiseaseProps) {
   const { status, disease } = useAppSelector((state) => state.disease);
   const dispatch = useAppDispatch();
 
-  const paragraphs = disease?.paragraph_2.split(". ");
+  const paragraphs = disease?.paragraph_2.split("/n");
 
   useEffect(() => {
     dispatch(fetchDisease(id));
@@ -49,12 +49,13 @@ export default function DiseaseBlock({ id }: DiseaseProps) {
           <div className={styles.bottom_block}>
             <h2>Профілактика і лікування</h2>
             <p>
-              {status === "loaded" && paragraphs !== undefined
-                ? paragraphs.map((paragraph, index) => (
-                    <p key={index}>
-                      {paragraph}
-                      {index < paragraphs.length - 1 ? "." : ""}
-                    </p>
+              {status === "loaded"
+                ? paragraphs !== undefined &&
+                  paragraphs.map((paragraph, index) => (
+                    <p
+                      key={index}
+                      dangerouslySetInnerHTML={{ __html: paragraph }}
+                    />
                   ))
                 : "Loading..."}
             </p>

@@ -16,7 +16,7 @@ export default function ServiceDetails({ id }: ServProps) {
     (state) => state.serviceDetails
   );
 
-  const paragraphs = service_item?.paragraph.split(". ");
+  const paragraphs = service_item?.paragraph.split("/n");
 
   return (
     <section className={styles.root}>
@@ -37,10 +37,10 @@ export default function ServiceDetails({ id }: ServProps) {
             {status === "loaded"
               ? paragraphs !== undefined &&
                 paragraphs.map((paragraph, index) => (
-                  <p key={index}>
-                    {paragraph}
-                    {index < paragraphs.length - 1 ? "." : ""}
-                  </p>
+                  <p
+                    key={index}
+                    dangerouslySetInnerHTML={{ __html: paragraph }}
+                  />
                 ))
               : "Loading..."}
           </p>
