@@ -69,6 +69,11 @@
   width: 100%;
   height: 100%;
 }
+.mobile_loader {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
 
 @media screen and (max-width: 900px) {
   .item_root {
@@ -103,6 +108,12 @@
       width: 95%;
       margin-bottom: 3%;
     }
+  }
+  .loader {
+    display: none;
+  }
+  .mobile_loader {
+    display: block;
   }
 }
 @media screen and (max-width: 650px) {

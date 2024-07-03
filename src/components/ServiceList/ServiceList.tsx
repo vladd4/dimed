@@ -134,7 +134,9 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
                 );
               })
             : [...new Array(6)].map((_, index) => (
-                <ServiceListLoader key={index} />
+                <>
+                  <ServiceListLoader key={index} />
+                </>
               ))}
         </div>
         {!isPricing && (

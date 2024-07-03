@@ -11,7 +11,7 @@ const ServiceListLoader = () => (
     foregroundColor="#ecebeb"
     className={styles.loader}
   >
-    <rect x="0" y="0" rx="15" ry="15" width="530" height="120" />
+    <rect x="0" y="0" rx="15" ry="15" width="530" height="115" />
   </ContentLoader>
 );
 
