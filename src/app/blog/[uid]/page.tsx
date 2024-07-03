@@ -1,20 +1,5 @@
-"use client";
-
-import BlogDetails from "@/components/BlogDetails/BlogDetails";
-import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
-import { useSearchParams } from "next/navigation";
+import BlogPage from "@/components/BlogPage/BlogPage";
 
 export default function BlogItemPage() {
-  const params = useSearchParams();
-  const id = params.get("id");
-  return (
-    <>
-      <BreadCrumbs
-        link_href={`/blog/blog-item/id=${id}`}
-        link_label={`${id}`}
-        isBlog
-      />
-      <BlogDetails /> 
-    </>
-  );
+  return <BlogPage />;
 }

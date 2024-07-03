@@ -21,29 +21,26 @@ export default function ServiceDetails({ id }: ServProps) {
   return (
     <section className={styles.root}>
       <article className={styles.top_block}>
-        <Image
-          alt="Massage"
-          src={
-            status === "loaded" && service_item !== null
-              ? service_item.image
-              : ""
-          }
-          width={940}
-          height={630}
-        />
+        {status === "loaded" && service_item !== null && (
+          <Image
+            alt="Massage"
+            src={service_item.image}
+            width={940}
+            height={630}
+          />
+        )}
+
         <div className={styles.text_block}>
           <h2>{id}</h2>
-          <p>
-            {status === "loaded"
-              ? paragraphs !== undefined &&
-                paragraphs.map((paragraph, index) => (
-                  <p
-                    key={index}
-                    dangerouslySetInnerHTML={{ __html: paragraph }}
-                  />
-                ))
-              : "Loading..."}
-          </p>
+          {status === "loaded"
+            ? paragraphs !== undefined &&
+              paragraphs.map((paragraph, index) => (
+                <p
+                  key={index}
+                  dangerouslySetInnerHTML={{ __html: paragraph }}
+                />
+              ))
+            : "Loading..."}
         </div>
       </article>
       <article className={styles.bottom_block}>

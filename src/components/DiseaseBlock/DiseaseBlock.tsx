@@ -32,26 +32,24 @@ export default function DiseaseBlock({ id }: DiseaseProps) {
           <div className={styles.top_block}>
             <div className={styles.text_block}>
               <h2>{id}</h2>
-              <p>
-                {status === "loaded"
-                  ? paragraphs_1 !== undefined &&
-                    paragraphs_1.map((paragraph, index) => (
-                      <p
-                        key={index}
-                        dangerouslySetInnerHTML={{ __html: paragraph }}
-                      />
-                    ))
-                  : "Loading..."}
-              </p>
+              {status === "loaded"
+                ? paragraphs_1 !== undefined &&
+                  paragraphs_1.map((paragraph, index) => (
+                    <p
+                      key={index}
+                      dangerouslySetInnerHTML={{ __html: paragraph }}
+                    />
+                  ))
+                : "Loading..."}
             </div>
-            <Image
-              alt="Disease Block"
-              src={
-                status === "loaded" && disease !== null ? disease.image_1 : ""
-              }
-              width={900}
-              height={600}
-            />
+            {status === "loaded" && disease !== null && (
+              <Image
+                alt="Disease Block"
+                src={disease.image_1}
+                width={900}
+                height={600}
+              />
+            )}
           </div>
           <div className={styles.bottom_block}>
             <h2>Профілактика і лікування</h2>

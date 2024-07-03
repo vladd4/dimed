@@ -21,6 +21,6 @@ export const links = [
   },
   {
     label: "Контакти",
-    href: "/#contacts",
+    href: "#contacts",
   },
 ];
