@@ -19,6 +19,7 @@ import ServiceListLoader from "./ServiceListLoader";
 import { fetchServiceLabel } from "@/redux/slices/serviceSlice";
 
 import Link from "next/link";
+import ServiceMobileLoader from "./ServiceMobileLoader";
 
 type ServiceListProps = {
   isPricing?: boolean;
@@ -57,7 +58,7 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
   return (
     <section className={styles.root}>
       <h2>{isPricing ? "Ціни" : "Послуги"}</h2>
-      {serviceLabel && <p>{serviceLabel}</p>}
+      <p>{serviceLabel}</p>
       <article className={styles.list_block}>
         <div className={styles.list}>
           {status === "loaded" && services !== null
@@ -136,7 +137,10 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
                 );
               })
             : [...new Array(6)].map((_, index) => (
-                <ServiceListLoader key={index} />
+                <React.Fragment key={index}>
+                  <ServiceListLoader key={index} />
+                  <ServiceMobileLoader />
+                </React.Fragment>
               ))}
         </div>
         {!isPricing && (
