@@ -7,6 +7,7 @@ import styles from "./Disease.module.scss";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
 import { useEffect } from "react";
 import { fetchDisease } from "@/redux/slices/diseaseSlice";
+import Loader from "../Loader";
 
 type DiseaseProps = {
   id: string;
@@ -23,7 +24,9 @@ export default function DiseaseBlock({ id }: DiseaseProps) {
     dispatch(fetchDisease(id));
   }, [dispatch]);
 
-  return (
+  return status === "loading" ? (
+    <Loader />
+  ) : (
     <section className={styles.root}>
       {status === "loaded" && disease !== null && disease.paragraph_1 === "" ? (
         <h2 className={styles.soon}>Опис захворювання скоро з'явиться...</h2>

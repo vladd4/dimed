@@ -6,7 +6,7 @@ import styles from "./ServiceList.module.scss";
 
 import { Circle } from "lucide-react";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { service_icons } from "@/static_store/service_icons";
 
@@ -16,6 +16,8 @@ import { fetchPricingAll } from "@/redux/slices/pricingSlice";
 import ServImage from "@/../public/service-icons/consult.png";
 
 import ServiceListLoader from "./ServiceListLoader";
+import { fetchServiceLabel } from "@/redux/slices/serviceSlice";
+
 import Link from "next/link";
 
 type ServiceListProps = {
@@ -32,6 +34,7 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
 
   useEffect(() => {
     dispatch(fetchPricingAll());
+    dispatch(fetchServiceLabel());
   }, [dispatch]);
 
   const handleShowTable = (id: string) => {
@@ -54,7 +57,7 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
   return (
     <section className={styles.root}>
       <h2>{isPricing ? "Ціни" : "Послуги"}</h2>
-      <p>{serviceLabel}</p>
+      {serviceLabel && <p>{serviceLabel}</p>}
       <article className={styles.list_block}>
         <div className={styles.list}>
           {status === "loaded" && services !== null
@@ -63,14 +66,13 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
                   service_icons.find((item) => item.name === service.name)
                     ?.icon || ServImage;
                 return (
-                  <>
+                  <React.Fragment key={service.name}>
                     <div
                       onClick={
                         isPricing
                           ? () => handleShowTable(service.name)
                           : () => handleShowServiceInfo(service.name)
                       }
-                      key={service.name}
                       className={`${styles.card} ${
                         isPricing && isClickedPrice.includes(service.name)
                           ? styles.pricing_clicked
@@ -120,9 +122,9 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
                               href={`/services/service?id=${serv}`}
                               className={styles.mobile_service}
                               key={serv}
-                              onClick={() =>
-                                sessionStorage.setItem("service-heading", serv)
-                              }
+                              onClick={() => {
+                                sessionStorage.setItem("service-heading", serv);
+                              }}
                             >
                               {serv}
                             </Link>
@@ -130,13 +132,11 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
                         })}
                       </div>
                     )}
-                  </>
+                  </React.Fragment>
                 );
               })
             : [...new Array(6)].map((_, index) => (
-                <>
-                  <ServiceListLoader key={index} />
-                </>
+                <ServiceListLoader key={index} />
               ))}
         </div>
         {!isPricing && (
@@ -152,9 +152,9 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
                   return item.whatDo.map((serv) => (
                     <Link
                       href={`/services/service?id=${serv}`}
-                      onClick={() =>
-                        sessionStorage.setItem("service-heading", serv)
-                      }
+                      onClick={() => {
+                        sessionStorage.setItem("service-heading", serv);
+                      }}
                       className={styles.list_item}
                       key={serv}
                     >

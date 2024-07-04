@@ -1,13 +1,41 @@
+"use client";
+
 import styles from "./BlogDetails.module.scss";
 
 import Image from "next/image";
 
 import Image1 from "@/../public/фото3 1.png";
+import { useEffect, useState } from "react";
+import Loader from "../Loader";
+
+type BlogItem = {
+  heading_1: string;
+  heading_2?: string;
+  heading_3?: string;
+  heading_4?: string;
+  heading_5?: string;
+  paragraph_1: string;
+  paragraph_2?: string;
+  paragraph_3?: string;
+  paragraph_4?: string;
+  paragraph_5?: string;
+  image_1: string;
+  image_2?: string;
+  author: string;
+  date: string;
+};
 
 export default function BlogDetails() {
-  const blog = JSON.parse(window.sessionStorage.getItem("blog")!);
+  const [blog, setBlog] = useState<BlogItem>();
+  useEffect(() => {
+    if (window !== undefined) {
+      setBlog(JSON.parse(window.sessionStorage.getItem("blog")!));
+    }
+  }, []);
 
-  return (
+  return !blog ? (
+    <Loader />
+  ) : (
     <section className={styles.root}>
       <article className={styles.top_block}>
         <Image

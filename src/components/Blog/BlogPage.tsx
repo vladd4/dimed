@@ -5,7 +5,7 @@ import BlogItem from "./BlogItem";
 
 import styles from "./Blog.module.scss";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { fetchBlogs } from "@/redux/slices/blogSlice";
 import BlogLoader from "./BlogLoader";
 import BlogMobileLoader from "./BlogMobileLoader";
@@ -29,10 +29,10 @@ export default function BlogPage() {
                 return <BlogItem key={blog.heading_1} blog={blog} />;
               })
             : [...new Array(3)].map((_, index) => (
-                <>
-                  <BlogLoader key={index} />
-                  <BlogMobileLoader key={index} />
-                </>
+                <React.Fragment key={index}>
+                  <BlogLoader />
+                  <BlogMobileLoader />
+                </React.Fragment>
               ))}
         </article>
       </section>

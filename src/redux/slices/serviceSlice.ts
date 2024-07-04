@@ -14,8 +14,7 @@ const initialState: ServiceSlice = {
   hrebet: null,
   pain: null,
   sugloby: null,
-  serviceLabel:
-    "Nam sed laoreet est. Fusce a porttitor sapien. Nunc egestas feugiat placerat.Aenean ac bibendum leo, vitae fringilla tellus!!!!!!!.",
+  serviceLabel: "",
   status: "loading",
 };
 

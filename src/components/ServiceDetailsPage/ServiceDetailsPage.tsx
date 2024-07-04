@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
 import { fetchServiceDetails } from "@/redux/slices/serviceDetailsSlice";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
+import Loader from "../Loader";
 
 export default function ServiceDetailsPage() {
   const params = useSearchParams();
@@ -22,7 +23,9 @@ export default function ServiceDetailsPage() {
   useEffect(() => {
     dispatch(fetchServiceDetails(id!));
   }, [dispatch]);
-  return (
+  return status === "loading" ? (
+    <Loader />
+  ) : (
     <>
       <BreadCrumbs link_href="/services" link_label={`${id}`} isServices />
       {status === "loaded" &&

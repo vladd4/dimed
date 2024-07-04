@@ -127,11 +127,16 @@ body {
 .loaded .loader {
   display: none;
 }
+.text {
+  font-size: calc(#{$size}* 1.2);
+  text-align: center;
+}
 @media screen and (max-width: 650px) {
   .loader img {
     width: 30%;
   }
-}
-.text {
-  text-align: center;
+  .text {
+    font-size: 20px;
+    text-align: center;
+  }
 }

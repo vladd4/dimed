@@ -39,6 +39,7 @@
         transition: all 0.3s;
         border: 7px solid $color-blur-light !important;
         padding: 2.2% 4%;
+        padding-right: 2.5%;
         &:hover {
           background-color: transparent !important;
         }
@@ -56,6 +57,7 @@
       .pricing_card {
         border: 7px solid $color-blur-light !important;
         padding: 2.2% 4%;
+        padding-right: 2.5%;
         &:hover {
           background-color: transparent !important;
         }
@@ -63,6 +65,7 @@
       .pricing_clicked {
         border: 7px solid $color-blur-light !important;
         padding: 2.2% 4%;
+        padding-right: 2.5%;
         background-color: transparent;
       }
       .service_clicked {
@@ -116,6 +119,7 @@
         text-decoration: none;
         color: $color-black;
         transition: all 0.3s;
+        cursor: pointer;
         &:hover {
           opacity: 0.7;
         }
@@ -141,6 +145,18 @@
   height: 100%;
   display: none;
 }
+@media screen and (max-width: 750px) {
+  .root {
+    .list_block {
+      .list {
+        width: 65%;
+      }
+      .show_info {
+        width: 30%;
+      }
+    }
+  }
+}
 @media screen and (max-width: 650px) {
   .root {
     width: 95%;
@@ -151,7 +167,7 @@
       margin-top: 2%;
     }
     p {
-      font-size: 15px;
+      font-size: 14px;
       margin-bottom: 3%;
     }
     .list_block {
@@ -159,11 +175,25 @@
         width: 100%;
         .card {
           border-radius: 10px;
+          gap: 8%;
+          &:hover {
+            background-color: $color-blur-light !important;
+          }
           h2 {
-            font-size: 22px;
+            font-size: 20px;
           }
           img {
-            width: 25%;
+            width: 23%;
+          }
+        }
+        .pricing_clicked {
+          &:hover {
+            background-color: transparent !important;
+          }
+        }
+        .service_clicked {
+          &:hover {
+            background-color: transparent !important;
           }
         }
         .show_table_mobile {
@@ -175,7 +205,7 @@
             width: 100%;
             text-align: center;
             background-color: $color-blur-light;
-            font-size: 15px;
+            font-size: 14px;
             margin: 0%;
             margin-bottom: 1.5%;
             border-radius: 10px;
@@ -190,11 +220,11 @@
           }
           .table_item {
             p {
-              font-size: 15px;
+              font-size: 14px;
               max-width: 70%;
             }
             span {
-              font-size: 15px;
+              font-size: 14px;
             }
           }
         }
