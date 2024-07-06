@@ -5,6 +5,7 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import Hamburger from "@/components/Header/Hamburger";
 import AlertForm from "@/components/AlertForm/AlertForm";
+import { ToastContainer } from "react-toastify";
 
 export const metadata: Metadata = {
   title: "DIMED - центр вертебрології та реабілітації у Вінниці",
@@ -40,6 +41,7 @@ export default function RootLayout({
         <ReduxProvider>
           <main className="main">
             <Header />
+            <ToastContainer />
             <Hamburger />
             {children}
             <Footer />

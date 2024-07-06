@@ -9,15 +9,13 @@ import { setShowAlert } from "@/redux/slices/alertSlice";
 
 import { useEffect, useRef, useState } from "react";
 
-import useClickOutside from "../../hooks/useClickOutside";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useForm } from "react-hook-form";
 
 import { FormValues, formSchema } from "@/formSchema";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { sendFormToTelegram } from "@/utils/sendFormToTelegram";
@@ -77,7 +75,6 @@ export default function AlertForm() {
 
   return (
     <>
-      <ToastContainer />
       <section
         ref={alertRef}
         className={`${styles.root} ${showAlert ? styles.show_alert : ""}`}
