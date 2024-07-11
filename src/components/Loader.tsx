@@ -1,4 +1,4 @@
-import Logo from "@/../public/logo-black.png";
+import Logo from "@/../public/logo_welcome 1.svg";
 import Image from "next/image";
 
 export default function Loader() {

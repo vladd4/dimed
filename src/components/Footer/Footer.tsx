@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import styles from "./Footer.module.scss";
 
-import Logo from "@/../public/logo-black.png";
+import Logo from "@/../public/logo_welcome 1.svg";
 import Face from "@/../public/face.png";
 import Insta from "@/../public/insta.png";
 import Teleg from "@/../public/teleg.png";

@@ -4,7 +4,7 @@ import styles from "./Welcome.module.scss";
 
 import Image from "next/image";
 
-import Logo from "@/../public/logo_welcome.png";
+import Logo from "@/../public/logo_welcome 1.svg";
 
 import { useAppDispatch } from "../../hooks/redux-hooks";
 import { setShowAlert } from "@/redux/slices/alertSlice";

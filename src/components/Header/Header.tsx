@@ -6,7 +6,7 @@ import styles from "./Header.module.scss";
 
 import Link from "next/link";
 
-import Logo from "@/../public/logo-black.png";
+import Logo from "@/../public/logo_welcome 1.svg";
 import Phone from "@/../public/phone-icon.svg";
 
 import { useAppDispatch } from "../../hooks/redux-hooks";
