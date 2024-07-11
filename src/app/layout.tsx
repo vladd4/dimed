@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="uk">
       <head>
-        <meta property="author" content="vladdonets" />
+        <meta property="author" content="vladdonets." />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, user-scalable=no"
