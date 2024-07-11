@@ -8,24 +8,19 @@ export async function generateMetadata({ searchParams }: any) {
   const docRef = doc(db, "service-page", productId);
   const docSnap = await getDoc(docRef);
 
-  const data = docSnap.data();
-  const disease = {
-    paragraph: data?.paragraph,
-    image: data?.image,
-    images: data?.images,
-    video_id: data?.video_id,
-    pokazania: data?.pokazania,
-    anti_pokazania: data?.anti_pokazania,
-    benefits: data?.benefits,
-    effects: data?.effects,
-  };
+  if (docSnap.exists()) {
+    const data = docSnap.data();
+    const disease = {
+      image: data?.image,
+    };
 
-  return {
-    title: productId,
-    openGraph: {
-      images: [disease.image],
-    },
-  };
+    return {
+      title: productId,
+      openGraph: {
+        images: [disease.image],
+      },
+    };
+  } else return null;
 }
 
 export default function ServDetails() {

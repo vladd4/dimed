@@ -1,17 +1,39 @@
-"use client";
-
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 import DiseaseBlock from "@/components/DiseaseBlock/DiseaseBlock";
+import { db } from "@/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
-import { useSearchParams } from "next/navigation";
+export async function generateMetadata({ searchParams }: any) {
+  const productId = searchParams.id;
 
-export default function DiseasePage() {
-  const params = useSearchParams();
-  const id = params.get("id");
+  const docRef = doc(db, "disease-page", productId);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    const data = docSnap.data();
+    const disease = {
+      image_1: data?.image_1,
+    };
+
+    return {
+      title: productId,
+      openGraph: {
+        images: [disease.image_1],
+      },
+    };
+  } else return null;
+}
+
+export default function DiseasePage({ searchParams }: any) {
+  const productId = searchParams.id;
+
   return (
     <>
-      <BreadCrumbs link_href={`/disease?id=${id}`} link_label={`${id}`} />
-      <DiseaseBlock id={`${id}`} />
+      <BreadCrumbs
+        link_href={`/disease?id=${productId}`}
+        link_label={`${productId}`}
+      />
+      <DiseaseBlock id={`${productId}`} />
     </>
   );
 }
