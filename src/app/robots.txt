@@ -1,3 +1,8 @@
 User-agent: *
 Allow: /
 
+User-agent: *
+Disallow: /*[uid]
+
+User-agent: *
+Disallow: /*[disease]
