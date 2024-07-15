@@ -53,6 +53,7 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
       setisClickedService("");
     } else {
       setisClickedService(id);
+      // window.scrollTo(0, 0);
     }
   };
   return (

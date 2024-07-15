@@ -131,6 +131,8 @@
     }
     .show_info {
       display: block;
+      position: sticky !important;
+      top: 15%;
     }
   }
 }

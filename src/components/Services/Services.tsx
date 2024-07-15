@@ -17,6 +17,7 @@ import ServImage from "@/../public/service-icons/consult.png";
 
 import ServiceLoader from "./ServiceLoader";
 import { fetchServiceLabel } from "@/redux/slices/serviceSlice";
+import Link from "next/link";
 
 export default function Services() {
   const [isClickedService, setisClickedService] = useState<string>("");
@@ -71,10 +72,14 @@ export default function Services() {
                     }`}
                   >
                     {service.whatDo.map((serv, index) => (
-                      <div className={styles.list_item} key={index}>
+                      <Link
+                        href={`/services/service?id=${serv}`}
+                        className={styles.list_item}
+                        key={index}
+                      >
                         <Circle fill="#294273" color="#294273" size={11} />
                         <p>{serv}</p>
-                      </div>
+                      </Link>
                     ))}
                   </div>
                 </div>

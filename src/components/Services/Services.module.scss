@@ -77,7 +77,14 @@
           display: flex;
           align-items: center;
           justify-content: flex-start;
+          color: $color-black;
+          text-decoration: none;
           gap: 2%;
+          transition: all 0.3s;
+          &:hover {
+            color: $color-dark-blue;
+            opacity: 0.9;
+          }
           p {
             font-size: calc(#{$size}/ 1.4);
             margin: 1% 0%;
