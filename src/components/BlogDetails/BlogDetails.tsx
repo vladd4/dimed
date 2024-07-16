@@ -67,9 +67,7 @@ export default function BlogDetails({ id }: BlogProps) {
     fetchBlogById(id);
   }, []);
 
-  return !blog ? (
-    <Loader />
-  ) : (
+  return !blog ? null : (
     <section className={styles.root}>
       <article className={styles.top_block}>
         <Image
