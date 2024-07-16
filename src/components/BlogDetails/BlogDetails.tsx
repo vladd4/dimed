@@ -65,9 +65,11 @@ export default function BlogDetails({ id }: BlogProps) {
 
   useEffect(() => {
     fetchBlogById(id);
-  }, []);
+  }, [id]);
 
-  return !blog ? null : (
+  return !blog ? (
+    <Loader />
+  ) : (
     <section className={styles.root}>
       <article className={styles.top_block}>
         <Image

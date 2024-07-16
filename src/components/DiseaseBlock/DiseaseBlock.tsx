@@ -22,9 +22,11 @@ export default function DiseaseBlock({ id }: DiseaseProps) {
 
   useEffect(() => {
     dispatch(fetchDisease(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
-  return status === "loading" ? null : (
+  return status === "loading" ? (
+    <Loader />
+  ) : (
     <section className={styles.root}>
       {status === "loaded" && disease !== null && disease.paragraph_1 === "" ? (
         <h2 className={styles.soon}>Опис захворювання скоро з'явиться...</h2>

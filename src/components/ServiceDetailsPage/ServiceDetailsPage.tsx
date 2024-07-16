@@ -23,8 +23,10 @@ export default function ServiceDetailsPage({ id }: ServiceDetailsProps) {
 
   useEffect(() => {
     dispatch(fetchServiceDetails(id!));
-  }, [dispatch]);
-  return status === "loading" ? null : (
+  }, [dispatch, id]);
+  return status === "loading" ? (
+    <Loader />
+  ) : (
     <>
       <BreadCrumbs link_href="/services" link_label={`${id}`} isServices />
       {status === "loaded" &&
