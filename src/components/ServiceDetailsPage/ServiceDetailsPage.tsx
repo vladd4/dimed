@@ -8,13 +8,14 @@ import ServiceDetails from "@/components/ServiceDetails/ServiceDetails";
 import VideoComp from "@/components/VideoComponent/VideoComp";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
 import { fetchServiceDetails } from "@/redux/slices/serviceDetailsSlice";
-import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import Loader from "../Loader";
 
-export default function ServiceDetailsPage() {
-  const params = useSearchParams();
-  const id = params.get("id");
+type ServiceDetailsProps = {
+  id: string;
+};
+
+export default function ServiceDetailsPage({ id }: ServiceDetailsProps) {
   const dispatch = useAppDispatch();
   const { status, service_item } = useAppSelector(
     (state) => state.serviceDetails

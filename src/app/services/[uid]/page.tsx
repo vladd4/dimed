@@ -23,6 +23,7 @@ export async function generateMetadata({ searchParams }: any) {
   } else return null;
 }
 
-export default function ServDetails() {
-  return <ServiceDetailsPage />;
+export default function ServDetails({ searchParams }: any) {
+  const productId = searchParams.id;
+  return <ServiceDetailsPage id={productId} />;
 }

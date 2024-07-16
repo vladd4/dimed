@@ -30,10 +30,6 @@ type BlogItemProps = {
 };
 
 export default function BlogItem({ blog }: BlogItemProps) {
-  const handleBlogClick = () => {
-    window.sessionStorage.setItem("blog", JSON.stringify(blog));
-  };
-
   return (
     <section className={styles.item_root}>
       <Image
@@ -46,10 +42,7 @@ export default function BlogItem({ blog }: BlogItemProps) {
         <h2>{blog.heading_1}</h2>
         <p>{blog.paragraph_1}</p>
         <p></p>
-        <Link
-          href={`/blog/blog-item?id=${blog.heading_1}`}
-          onClick={handleBlogClick}
-        >
+        <Link href={`/blog/blog-item?id=${blog.heading_1}`}>
           Детальніше <MoveRight />
         </Link>
       </div>

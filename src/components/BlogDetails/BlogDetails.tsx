@@ -64,15 +64,7 @@ export default function BlogDetails({ id }: BlogProps) {
   };
 
   useEffect(() => {
-    if (window !== undefined) {
-      setBlog(JSON.parse(window.sessionStorage.getItem("blog")!));
-    }
-    if (
-      window !== undefined &&
-      !JSON.parse(window.sessionStorage.getItem("blog")!)
-    ) {
-      fetchBlogById(id);
-    }
+    fetchBlogById(id);
   }, []);
 
   return !blog ? (

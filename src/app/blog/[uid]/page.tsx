@@ -30,6 +30,7 @@ export async function generateMetadata({ searchParams }: any) {
   }
 }
 
-export default function BlogItemPage() {
-  return <BlogPage />;
+export default function BlogItemPage({ searchParams }: any) {
+  const blogId = searchParams.id;
+  return <BlogPage id={blogId} />;
 }
