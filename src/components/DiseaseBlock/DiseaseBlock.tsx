@@ -24,9 +24,7 @@ export default function DiseaseBlock({ id }: DiseaseProps) {
     dispatch(fetchDisease(id));
   }, [dispatch]);
 
-  return status === "loading" ? (
-    <Loader />
-  ) : (
+  return status === "loading" ? null : (
     <section className={styles.root}>
       {status === "loaded" && disease !== null && disease.paragraph_1 === "" ? (
         <h2 className={styles.soon}>Опис захворювання скоро з'явиться...</h2>
