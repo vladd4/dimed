@@ -1,20 +1,10 @@
+import { DetailsServiceItem } from "@/app/types/general.types";
 import { db } from "@/firebase";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { doc, getDoc } from "firebase/firestore";
 
-type ServiceItem = {
-  image: string;
-  images: string[];
-  paragraph: string;
-  video_id: string;
-  pokazania: { name: string; description: string }[];
-  anti_pokazania: { name: string; description: string }[];
-  benefits: { name: string; description: string }[];
-  effects: { name: string; description: string }[];
-};
-
 type ServiceDetailsSlice = {
-  service_item: ServiceItem | null;
+  service_item: DetailsServiceItem | null;
   status: "loading" | "loaded";
 };
 
@@ -32,7 +22,7 @@ export const fetchServiceDetails = createAsyncThunk(
     if (docSnap.exists()) {
       const data = docSnap.data();
 
-      const disease: ServiceItem = {
+      const disease: DetailsServiceItem = {
         paragraph: data.paragraph,
         image: data.image,
         images: data.images,

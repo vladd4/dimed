@@ -9,23 +9,7 @@ import { useEffect, useState } from "react";
 import Loader from "../Loader";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/firebase";
-
-type BlogItem = {
-  heading_1: string;
-  heading_2?: string;
-  heading_3?: string;
-  heading_4?: string;
-  heading_5?: string;
-  paragraph_1: string;
-  paragraph_2?: string;
-  paragraph_3?: string;
-  paragraph_4?: string;
-  paragraph_5?: string;
-  image_1: string;
-  image_2?: string;
-  author: string;
-  date: string;
-};
+import { BlogItem } from "@/app/types/general.types";
 
 type BlogProps = {
   id: string;
@@ -34,48 +18,32 @@ type BlogProps = {
 export default function BlogDetails({ id }: BlogProps) {
   const [blog, setBlog] = useState<BlogItem>();
 
-  const fetchBlogById = async (id: string, retryAttempts = 3) => {
-    let attempt = 0;
-    while (attempt < retryAttempts) {
-      try {
-        const q = query(collection(db, "blog"), where("heading_1", "==", id));
-        const querySnapshot = await getDocs(q);
+  const fetchBlogById = async (id: string) => {
+    const q = query(collection(db, "blog"), where("heading_1", "==", id));
 
-        if (!querySnapshot.empty) {
-          const docSnap = querySnapshot.docs[0];
-          const data = docSnap.data();
+    const querySnapshot = await getDocs(q);
 
-          const blogItem = {
-            heading_1: data.heading_1,
-            heading_2: data.heading_2,
-            heading_3: data.heading_3,
-            heading_4: data.heading_4,
-            heading_5: data.heading_5,
-            paragraph_1: data.paragraph_1,
-            paragraph_2: data.paragraph_2,
-            paragraph_3: data.paragraph_3,
-            paragraph_4: data.paragraph_4,
-            paragraph_5: data.paragraph_5,
-            image_1: data.image_1,
-            image_2: data.image_2,
-            author: data.author,
-            date: data.date,
-          };
-          setBlog(blogItem);
-          return;
-        } else {
-          console.error(`Document with heading_1 "${id}" does not exist.`);
-        }
-      } catch (error) {
-        console.error("Error fetching blog:", error);
-        attempt++;
-        if (attempt < retryAttempts) {
-          console.log(`Retrying fetch, attempt ${attempt}...`);
-          await new Promise((resolve) => setTimeout(resolve, 500));
-        } else {
-          console.error("Maximum retry attempts exceeded.");
-        }
-      }
+    if (!querySnapshot.empty) {
+      const docSnap = querySnapshot.docs[0];
+      const data = docSnap.data();
+
+      const blogItem = {
+        heading_1: data.heading_1,
+        heading_2: data.heading_2,
+        heading_3: data.heading_3,
+        heading_4: data.heading_4,
+        heading_5: data.heading_5,
+        paragraph_1: data.paragraph_1,
+        paragraph_2: data.paragraph_2,
+        paragraph_3: data.paragraph_3,
+        paragraph_4: data.paragraph_4,
+        paragraph_5: data.paragraph_5,
+        image_1: data.image_1,
+        image_2: data.image_2,
+        author: data.author,
+        date: data.date,
+      };
+      setBlog(blogItem);
     }
   };
 

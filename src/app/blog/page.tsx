@@ -1,9 +1,12 @@
 import BlogPage from "@/components/Blog/BlogPage";
+import { getData } from "@/utils/getDataHelper";
 
-export default function Blog() {
+export default async function Blog() {
+  const items = await getData("/blog");
+  const fetchedBlogs = JSON.parse(items.body);
   return (
     <>
-      <BlogPage />
+      <BlogPage blogs={fetchedBlogs} />
     </>
   );
 }

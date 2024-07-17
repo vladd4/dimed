@@ -4,10 +4,12 @@ import Image from "next/image";
 
 import styles from "./Disease.module.scss";
 
-import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
 import { useEffect } from "react";
-import { fetchDisease } from "@/redux/slices/diseaseSlice";
+
 import Loader from "../Loader";
+
+import { fetchDisease } from "@/redux/slices/diseaseSlice";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
 
 type DiseaseProps = {
   id: string;

@@ -6,20 +6,22 @@ import Image from "next/image";
 
 import { ChevronDown, ChevronUp, Circle } from "lucide-react";
 
-import { useEffect, useState } from "react";
-
-import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
-import { fetchPricingAll } from "@/redux/slices/pricingSlice";
+import { useState } from "react";
 
 import { service_icons } from "@/static_store/service_icons";
 
 import ServImage from "@/../public/service-icons/consult.png";
 
 import ServiceLoader from "./ServiceLoader";
-import { fetchServiceLabel } from "@/redux/slices/serviceSlice";
 import Link from "next/link";
+import { ServiceItem } from "@/app/types/general.types";
 
-export default function Services() {
+type ServProps = {
+  services: ServiceItem[];
+  serviceLabel: string;
+};
+
+export default function Services({ services, serviceLabel }: ServProps) {
   const [isClickedService, setisClickedService] = useState<string>("");
 
   const handleShowServiceInfo = (id: string) => {
@@ -29,20 +31,12 @@ export default function Services() {
       setisClickedService(id);
     }
   };
-  const { services, status } = useAppSelector((state) => state.pricing);
-  const { serviceLabel } = useAppSelector((state) => state.services);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(fetchPricingAll());
-    dispatch(fetchServiceLabel());
-  }, [dispatch]);
   return (
     <section className={styles.root}>
       <h2>Послуги</h2>
       <p>{serviceLabel}</p>
       <article className={styles.cards_block}>
-        {status === "loaded" && services !== null
+        {services !== undefined
           ? services.map((service) => {
               let icon =
                 service_icons.find((item) => item.name === service.name)

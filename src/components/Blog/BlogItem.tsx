@@ -9,24 +9,10 @@ import BlogImage from "@/../public/blog-image.png";
 import Link from "next/link";
 
 import { MoveRight } from "lucide-react";
+import { BlogItem as BlogItemType } from "@/app/types/general.types";
 
 type BlogItemProps = {
-  blog: {
-    heading_1: string;
-    heading_2?: string;
-    heading_3?: string;
-    heading_4?: string;
-    heading_5?: string;
-    paragraph_1: string;
-    paragraph_2?: string;
-    paragraph_3?: string;
-    paragraph_4?: string;
-    paragraph_5?: string;
-    image_1: string;
-    image_2?: string;
-    author: string;
-    date: string;
-  };
+  blog: BlogItemType;
 };
 
 export default function BlogItem({ blog }: BlogItemProps) {

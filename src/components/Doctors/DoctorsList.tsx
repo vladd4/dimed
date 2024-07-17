@@ -1,31 +1,28 @@
-"use client";
-
 import styles from "./Doctors.module.scss";
-
-import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
-import { fetchDoctors } from "@/redux/slices/doctorsSlice";
 
 import DoctorCard from "./DoctorCard";
 import DoctorsLoader from "./DoctorsLoader";
+import { getData } from "@/utils/getDataHelper";
 
-import { useEffect } from "react";
+type DoctorCard = {
+  name: string;
+  position: string;
+  image: string;
+};
 
 type ListProps = {
   isAdmin?: boolean;
 };
 
-export default function DoctorsList({ isAdmin }: ListProps) {
-  const dispatch = useAppDispatch();
-  const doctorSlice = useAppSelector((state) => state.doctors);
+export default async function DoctorsList({ isAdmin }: ListProps) {
+  const res = await getData("/doctors");
+  const doctors = res.body as DoctorCard[];
 
-  useEffect(() => {
-    dispatch(fetchDoctors());
-  }, [dispatch]);
   return (
     <section className={styles.root}>
       <article className={styles.doctor_list}>
-        {doctorSlice.status === "loaded" && doctorSlice.doctors !== null
-          ? doctorSlice.doctors.map((doctor) => {
+        {doctors !== null
+          ? doctors.map((doctor) => {
               return (
                 <DoctorCard
                   key={doctor.name}

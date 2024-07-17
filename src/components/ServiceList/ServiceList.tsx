@@ -6,37 +6,31 @@ import styles from "./ServiceList.module.scss";
 
 import { Circle } from "lucide-react";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { service_icons } from "@/static_store/service_icons";
-
-import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
-import { fetchPricingAll } from "@/redux/slices/pricingSlice";
 
 import ServImage from "@/../public/service-icons/consult.png";
 
 import ServiceListLoader from "./ServiceListLoader";
-import { fetchServiceLabel } from "@/redux/slices/serviceSlice";
 
 import Link from "next/link";
 import ServiceMobileLoader from "./ServiceMobileLoader";
+import { ServiceItem } from "@/app/types/general.types";
 
 type ServiceListProps = {
   isPricing?: boolean;
+  services?: ServiceItem[];
+  serviceLabel?: string;
 };
 
-export default function ServiceList({ isPricing }: ServiceListProps) {
+export default function ServiceList({
+  isPricing,
+  services,
+  serviceLabel,
+}: ServiceListProps) {
   const [isClickedPrice, setisClickedPrice] = useState<string[]>([]);
   const [isClickedService, setisClickedService] = useState<string>("");
-
-  const { status, services } = useAppSelector((state) => state.pricing);
-  const { serviceLabel } = useAppSelector((state) => state.services);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(fetchPricingAll());
-    dispatch(fetchServiceLabel());
-  }, [dispatch]);
 
   const handleShowTable = (id: string) => {
     setisClickedPrice((prev) => {
@@ -61,7 +55,7 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
       <p>{serviceLabel}</p>
       <article className={styles.list_block}>
         <div className={styles.list}>
-          {status === "loaded" && services !== null
+          {services !== undefined
             ? services.map((service) => {
                 let icon =
                   service_icons.find((item) => item.name === service.name)
@@ -149,8 +143,7 @@ export default function ServiceList({ isPricing }: ServiceListProps) {
               isClickedService !== "" ? styles.show_info : ""
             }`}
           >
-            {status === "loaded" &&
-              services !== null &&
+            {services !== undefined &&
               services.map((item) => {
                 if (item.name === isClickedService) {
                   return item.whatDo.map((serv) => (

@@ -8,19 +8,13 @@ import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 
 import DoctorCard from "../Doctors/DoctorCard";
 import DoctorsLoader from "../Doctors/DoctorsLoader";
+import { DoctorCard as DoctorCardType } from "@/app/types/general.types";
 
-import { useAppDispatch, useAppSelector } from "@/hooks/redux-hooks";
-import { fetchDoctors } from "@/redux/slices/doctorsSlice";
+type DoctorProps = {
+  doctors?: DoctorCardType[];
+};
 
-import { useEffect } from "react";
-
-const DoctorsSlider = () => {
-  const dispatch = useAppDispatch();
-  const doctorSlice = useAppSelector((state) => state.doctors);
-
-  useEffect(() => {
-    dispatch(fetchDoctors());
-  }, [dispatch]);
+const DoctorsSlider = ({ doctors }: DoctorProps) => {
   return (
     <Splide
       options={{
@@ -44,8 +38,8 @@ const DoctorsSlider = () => {
       className={styles.slider}
       id="doctors-slider"
     >
-      {doctorSlice.status === "loaded" && doctorSlice.doctors !== null
-        ? doctorSlice.doctors.slice(0, 6).map((doctor) => {
+      {doctors !== undefined
+        ? doctors.slice(0, 6).map((doctor) => {
             return (
               <SplideSlide key={doctor.name}>
                 <DoctorCard
