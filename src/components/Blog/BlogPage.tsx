@@ -8,7 +8,7 @@ import BlogMobileLoader from "./BlogMobileLoader";
 import { BlogItem as BlogItemType } from "@/app/types/general.types";
 
 type Props = {
-  blogs: BlogItemType[];
+  blogs: BlogItemType[] | null;
 };
 
 export default function BlogPage({ blogs }: Props) {
@@ -18,7 +18,7 @@ export default function BlogPage({ blogs }: Props) {
       <section className={styles.root}>
         <h2>Корисні статті</h2>
         <article className={styles.blog_list}>
-          {blogs.length !== 0
+          {blogs !== null
             ? blogs.map((blog) => {
                 return <BlogItem key={blog.heading_1} blog={blog} />;
               })

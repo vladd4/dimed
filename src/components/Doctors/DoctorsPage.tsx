@@ -5,7 +5,7 @@ export default function DoctorsPage() {
   return (
     <>
       <BreadCrumbs link_href="/doctors" link_label="Лікарі" />
-      <DoctorsList />
+      {/* <DoctorsList /> */}
     </>
   );
 }
