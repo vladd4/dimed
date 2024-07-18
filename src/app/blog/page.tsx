@@ -3,7 +3,7 @@ import { db } from "@/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { BlogItem } from "../types/general.types";
 
-export async function getData() {
+async function getData() {
   try {
     const collectionRef = collection(db, "blog");
     const data = await getDocs(collectionRef);
