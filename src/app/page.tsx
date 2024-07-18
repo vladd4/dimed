@@ -7,16 +7,16 @@ import WhatWeDo from "@/components/WhatWeDo/WhatWeDo";
 import { getData } from "@/utils/getDataHelper";
 
 export default async function Home() {
-  // const serv_res = await getData("/pricing");
-  // const label_res = await getData("/pricing/label");
+  const serv_res = await getData("/pricing");
+  const label_res = await getData("/pricing/label");
   return (
     <>
       <Welcome />
       <About />
-      {/* <WhatWeDo /> */}
-      {/* <Services serviceLabel={label_res.body} services={serv_res.body} /> */}
+      <WhatWeDo />
+      <Services serviceLabel={label_res.body} services={serv_res.body} />
       <ContactForm />
-      {/* <DoctorsSliderBlock /> */}
+      <DoctorsSliderBlock />
     </>
   );
 }
