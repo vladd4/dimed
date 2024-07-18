@@ -4,33 +4,11 @@ import styles from "./Disease.module.scss";
 
 import Loader from "../Loader";
 
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "@/firebase";
-import { Disease } from "@/app/types/general.types";
+import { getDisease } from "@/controllers/disease";
 
 type DiseaseProps = {
   id: string;
 };
-
-async function getDisease(id: string) {
-  const docRef = doc(db, "disease-page", id);
-  const docSnap = await getDoc(docRef);
-
-  if (docSnap.exists()) {
-    const data = docSnap.data();
-
-    const disease: Disease = {
-      paragraph_1: data.paragraph_1,
-      paragraph_2: data.paragraph_2,
-      image_1: data.image_1,
-      image_2: data.image_2,
-    };
-
-    return disease;
-  } else {
-    throw new Error(`Document with ID ${id} does not exist`);
-  }
-}
 
 export default async function DiseaseBlock({ id }: DiseaseProps) {
   const disease = await getDisease(id);
@@ -68,15 +46,15 @@ export default async function DiseaseBlock({ id }: DiseaseProps) {
           </div>
           <div className={styles.bottom_block}>
             <h2>Профілактика і лікування</h2>
-            <p>
-              {paragraphs !== undefined &&
-                paragraphs.map((paragraph, index) => (
-                  <p
-                    key={index}
-                    dangerouslySetInnerHTML={{ __html: paragraph }}
-                  />
-                ))}
-            </p>
+
+            {paragraphs !== undefined &&
+              paragraphs.map((paragraph, index) => (
+                <p
+                  key={index}
+                  dangerouslySetInnerHTML={{ __html: paragraph }}
+                />
+              ))}
+
             {disease !== undefined && disease.image_2 && (
               <Image
                 alt="Disease Block 2"

@@ -1,22 +1,16 @@
 import BreadCrumbs from "@/components/BreadCrumbs/BreadCrumbs";
 import DiseaseBlock from "@/components/DiseaseBlock/DiseaseBlock";
-import { db } from "@/firebase";
-import { doc, getDoc } from "firebase/firestore";
+
+import { getDisease } from "@/controllers/disease";
 
 export async function generateMetadata({ searchParams }: any) {
-  const productId = searchParams.id;
+  const id = searchParams?.id;
 
-  const docRef = doc(db, "disease-page", productId);
-  const docSnap = await getDoc(docRef);
+  const disease = await getDisease(id);
 
-  if (docSnap.exists()) {
-    const data = docSnap.data();
-    const disease = {
-      image_1: data?.image_1,
-    };
-
+  if (disease !== undefined) {
     return {
-      title: productId,
+      title: id,
       openGraph: {
         images: [disease.image_1],
       },
@@ -25,8 +19,7 @@ export async function generateMetadata({ searchParams }: any) {
 }
 
 export default function DiseasePage({ searchParams }: any) {
-  const productId = searchParams.id;
-
+  const productId = searchParams?.id;
   return (
     <>
       <BreadCrumbs

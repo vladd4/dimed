@@ -6,40 +6,15 @@ import ServiceDetails from "@/components/ServiceDetails/ServiceDetails";
 import VideoComp from "@/components/VideoComponent/VideoComp";
 
 import Loader from "../Loader";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "@/firebase";
-import { DetailsServiceItem } from "@/app/types/general.types";
+
+import { getServiceById } from "@/controllers/services";
 
 type ServiceDetailsProps = {
   id: string;
 };
 
-async function getService(id: string) {
-  const docRef = doc(db, "service-page", id);
-  const docSnap = await getDoc(docRef);
-
-  if (docSnap.exists()) {
-    const data = docSnap.data();
-
-    const service: DetailsServiceItem = {
-      paragraph: data.paragraph,
-      image: data.image,
-      images: data.images,
-      video_id: data.video_id,
-      pokazania: data.pokazania,
-      anti_pokazania: data.anti_pokazania,
-      benefits: data.benefits,
-      effects: data.effects,
-    };
-
-    return service;
-  } else {
-    throw new Error(`Document with ID ${id} does not exist`);
-  }
-}
-
 export default async function ServiceDetailsPage({ id }: ServiceDetailsProps) {
-  const service_item = await getService(id);
+  const service_item = await getServiceById(id);
 
   return service_item === undefined ? (
     <Loader />

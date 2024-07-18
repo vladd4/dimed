@@ -1,44 +1,17 @@
-import { collection, getDocs, QueryDocumentSnapshot } from "firebase/firestore";
 import styles from "./WhatDo.module.scss";
 
 import { Circle } from "lucide-react";
 
 import Link from "next/link";
-import { db } from "@/firebase";
+
+import { getWhatDo } from "@/controllers/services";
 
 type WhatProps = {
   isAdmin?: boolean;
 };
 
-async function getData() {
-  const collectionRef = collection(db, "disease");
-  const data = await getDocs(collectionRef);
-  let hrebet: string[] = [];
-  let pain: string[] = [];
-  let sugloby: string[] = [];
-
-  data.docs.forEach((doc: QueryDocumentSnapshot) => {
-    const disease = doc;
-    if (disease.id === "hrebet") {
-      hrebet = disease.data().values as string[];
-    }
-    if (disease.id === "pain") {
-      pain = disease.data().values as string[];
-    }
-    if (disease.id === "sugloby") {
-      sugloby = disease.data().values as string[];
-    }
-  });
-
-  return {
-    hrebet,
-    pain,
-    sugloby,
-  };
-}
-
 export default async function WhatWeDo({ isAdmin }: WhatProps) {
-  const res = await getData();
+  const res = await getWhatDo();
 
   const hrebet = res.hrebet as string[];
   const pain = res.pain as string[];

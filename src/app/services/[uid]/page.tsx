@@ -1,23 +1,16 @@
 import ServiceDetailsPage from "@/components/ServiceDetailsPage/ServiceDetailsPage";
-import { db } from "@/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { getServiceById } from "@/controllers/services";
 
 export async function generateMetadata({ searchParams }: any) {
   const productId = searchParams.id;
 
-  const docRef = doc(db, "service-page", productId);
-  const docSnap = await getDoc(docRef);
+  const service_item = await getServiceById(productId);
 
-  if (docSnap.exists()) {
-    const data = docSnap.data();
-    const disease = {
-      image: data?.image,
-    };
-
+  if (service_item !== undefined) {
     return {
       title: productId,
       openGraph: {
-        images: [disease.image],
+        images: [service_item.image],
       },
     };
   } else return null;
