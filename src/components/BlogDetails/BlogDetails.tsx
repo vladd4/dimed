@@ -1,57 +1,49 @@
-"use client";
-
 import styles from "./BlogDetails.module.scss";
 
 import Image from "next/image";
 
 import Image1 from "@/../public/фото3 1.png";
-import { useEffect, useState } from "react";
 import Loader from "../Loader";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/firebase";
-import { BlogItem } from "@/app/types/general.types";
 
 type BlogProps = {
   id: string;
 };
 
-export default function BlogDetails({ id }: BlogProps) {
-  const [blog, setBlog] = useState<BlogItem>();
+async function getBlog(id: string) {
+  const q = query(collection(db, "blog"), where("heading_1", "==", id));
 
-  const fetchBlogById = async (id: string) => {
-    const q = query(collection(db, "blog"), where("heading_1", "==", id));
+  const querySnapshot = await getDocs(q);
 
-    const querySnapshot = await getDocs(q);
+  if (!querySnapshot.empty) {
+    const docSnap = querySnapshot.docs[0];
+    const data = docSnap.data();
 
-    if (!querySnapshot.empty) {
-      const docSnap = querySnapshot.docs[0];
-      const data = docSnap.data();
+    const blogItem = {
+      heading_1: data.heading_1,
+      heading_2: data.heading_2,
+      heading_3: data.heading_3,
+      heading_4: data.heading_4,
+      heading_5: data.heading_5,
+      paragraph_1: data.paragraph_1,
+      paragraph_2: data.paragraph_2,
+      paragraph_3: data.paragraph_3,
+      paragraph_4: data.paragraph_4,
+      paragraph_5: data.paragraph_5,
+      image_1: data.image_1,
+      image_2: data.image_2,
+      author: data.author,
+      date: data.date,
+    };
+    return blogItem;
+  }
+}
 
-      const blogItem = {
-        heading_1: data.heading_1,
-        heading_2: data.heading_2,
-        heading_3: data.heading_3,
-        heading_4: data.heading_4,
-        heading_5: data.heading_5,
-        paragraph_1: data.paragraph_1,
-        paragraph_2: data.paragraph_2,
-        paragraph_3: data.paragraph_3,
-        paragraph_4: data.paragraph_4,
-        paragraph_5: data.paragraph_5,
-        image_1: data.image_1,
-        image_2: data.image_2,
-        author: data.author,
-        date: data.date,
-      };
-      setBlog(blogItem);
-    }
-  };
+export default async function BlogDetails({ id }: BlogProps) {
+  const blog = await getBlog(id);
 
-  useEffect(() => {
-    fetchBlogById(id);
-  }, [id]);
-
-  return !blog ? (
+  return blog === undefined ? (
     <Loader />
   ) : (
     <section className={styles.root}>
