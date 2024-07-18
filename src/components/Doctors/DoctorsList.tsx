@@ -2,7 +2,8 @@ import styles from "./Doctors.module.scss";
 
 import DoctorCard from "./DoctorCard";
 import DoctorsLoader from "./DoctorsLoader";
-import { getData } from "@/utils/getDataHelper";
+import { collection, getDocs, QueryDocumentSnapshot } from "firebase/firestore";
+import { db } from "@/firebase";
 
 type DoctorCard = {
   name: string;
@@ -14,9 +15,19 @@ type ListProps = {
   isAdmin?: boolean;
 };
 
+async function getData() {
+  const collectionRef = collection(db, "doctors");
+  const data = await getDocs(collectionRef);
+
+  return data.docs.map((doc: QueryDocumentSnapshot) => ({
+    name: doc.get("name"),
+    position: doc.get("position"),
+    image: doc.get("image"),
+  })) as DoctorCard[];
+}
+
 export default async function DoctorsList({ isAdmin }: ListProps) {
-  const res = await getData("/doctors");
-  const doctors = res.body as DoctorCard[];
+  const doctors = await getData();
 
   return (
     <section className={styles.root}>
