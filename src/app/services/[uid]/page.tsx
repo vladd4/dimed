@@ -1,14 +1,15 @@
 import ServiceDetailsPage from "@/components/ServiceDetailsPage/ServiceDetailsPage";
 import { getServiceById } from "@/controllers/services";
+import { decrypt } from "@/utils/stringEncryptor";
 
 export async function generateMetadata({ searchParams }: any) {
   const productId = searchParams.id;
-
-  const service_item = await getServiceById(productId);
+  const decryptedId = decrypt(productId);
+  const service_item = await getServiceById(decryptedId);
 
   if (service_item !== undefined) {
     return {
-      title: productId,
+      title: decryptedId,
       openGraph: {
         images: [service_item.image],
       },
@@ -18,5 +19,6 @@ export async function generateMetadata({ searchParams }: any) {
 
 export default function ServDetails({ searchParams }: any) {
   const productId = searchParams.id;
-  return <ServiceDetailsPage id={productId} />;
+  const decryptedId = decrypt(productId);
+  return <ServiceDetailsPage id={decryptedId} />;
 }

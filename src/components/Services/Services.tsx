@@ -15,6 +15,7 @@ import ServImage from "@/../public/service-icons/consult.png";
 import ServiceLoader from "./ServiceLoader";
 import Link from "next/link";
 import { ServiceItem } from "@/app/types/general.types";
+import { encrypt } from "@/utils/stringEncryptor";
 
 type ServProps = {
   services: ServiceItem[];
@@ -67,7 +68,7 @@ export default function Services({ services, serviceLabel }: ServProps) {
                   >
                     {service.whatDo.map((serv, index) => (
                       <Link
-                        href={`/services/service?id=${serv}`}
+                        href={`/services/service?id=${encrypt(serv)}`}
                         className={styles.list_item}
                         key={index}
                       >

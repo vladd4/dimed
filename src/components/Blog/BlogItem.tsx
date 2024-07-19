@@ -10,6 +10,7 @@ import Link from "next/link";
 
 import { MoveRight } from "lucide-react";
 import { BlogItem as BlogItemType } from "@/app/types/general.types";
+import { encrypt } from "@/utils/stringEncryptor";
 
 type BlogItemProps = {
   blog: BlogItemType;
@@ -28,7 +29,7 @@ export default function BlogItem({ blog }: BlogItemProps) {
         <h2>{blog.heading_1}</h2>
         <p>{blog.paragraph_1}</p>
         <p></p>
-        <Link href={`/blog/blog-item?id=${blog.heading_1}`}>
+        <Link href={`/blog/blog-item?id=${encrypt(blog.heading_1)}`}>
           Детальніше <MoveRight />
         </Link>
       </div>

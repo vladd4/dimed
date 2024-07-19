@@ -17,6 +17,7 @@ import ServiceListLoader from "./ServiceListLoader";
 import Link from "next/link";
 import ServiceMobileLoader from "./ServiceMobileLoader";
 import { ServiceItem } from "@/app/types/general.types";
+import { encrypt } from "@/utils/stringEncryptor";
 
 type ServiceListProps = {
   isPricing?: boolean;
@@ -114,7 +115,7 @@ export default function ServiceList({
                         {service.whatDo.map((serv) => {
                           return (
                             <Link
-                              href={`/services/service?id=${serv}`}
+                              href={`/services/service?id=${encrypt(serv)}`}
                               className={styles.mobile_service}
                               key={serv}
                               onClick={() => {
@@ -148,7 +149,7 @@ export default function ServiceList({
                 if (item.name === isClickedService) {
                   return item.whatDo.map((serv) => (
                     <Link
-                      href={`/services/service?id=${serv}`}
+                      href={`/services/service?id=${encrypt(serv)}`}
                       onClick={() => {
                         sessionStorage.setItem("service-heading", serv);
                       }}

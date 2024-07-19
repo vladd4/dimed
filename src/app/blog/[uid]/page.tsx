@@ -1,14 +1,15 @@
 import BlogPage from "@/components/BlogPage/BlogPage";
 import { getBlogById } from "@/controllers/blog";
+import { decrypt } from "@/utils/stringEncryptor";
 
 export async function generateMetadata({ searchParams }: any) {
   const blogId = searchParams.id;
-
-  const blog = await getBlogById(blogId);
+  const decryptedId = decrypt(blogId);
+  const blog = await getBlogById(decryptedId);
 
   if (blog !== undefined) {
     return {
-      title: blogId,
+      title: decryptedId,
       openGraph: {
         images: [blog.image_1],
       },
@@ -18,5 +19,6 @@ export async function generateMetadata({ searchParams }: any) {
 
 export default function BlogItemPage({ searchParams }: any) {
   const blogId = searchParams.id;
-  return <BlogPage id={blogId} />;
+  const decryptedId = decrypt(blogId);
+  return <BlogPage id={decryptedId} />;
 }
