@@ -5,6 +5,7 @@ import { Circle } from "lucide-react";
 import Link from "next/link";
 
 import { getWhatDo } from "@/controllers/services";
+import { encrypt } from "@/utils/stringEncryptor";
 
 type WhatProps = {
   isAdmin?: boolean;
@@ -24,11 +25,11 @@ export default async function WhatWeDo({ isAdmin }: WhatProps) {
         <div className={styles.card}>
           <h2>Лікування захворювання хребта</h2>
           <div className={styles.card_list}>
-            {hrebet !== null ? (
+            {hrebet !== undefined ? (
               hrebet.map((condition) => {
                 return (
                   <Link
-                    href={`/diseases?id=${condition}`}
+                    href={`/diseases?id=${encrypt(condition)}`}
                     key={condition}
                     className={styles.list_item}
                   >
@@ -45,11 +46,11 @@ export default async function WhatWeDo({ isAdmin }: WhatProps) {
         <div className={styles.card}>
           <h2>Лікування захворювань суглобів</h2>
           <div className={styles.card_list}>
-            {sugloby !== null ? (
+            {sugloby !== undefined ? (
               sugloby.map((condition) => {
                 return (
                   <Link
-                    href={`/diseases?id=${condition}`}
+                    href={`/diseases?id=${encrypt(condition)}`}
                     key={condition}
                     className={styles.list_item}
                   >
@@ -66,11 +67,11 @@ export default async function WhatWeDo({ isAdmin }: WhatProps) {
         <div className={styles.card}>
           <h2>Лікування гострого та хронічного болю</h2>
           <div className={styles.card_list}>
-            {pain !== null ? (
+            {pain !== undefined ? (
               pain.map((condition) => {
                 return (
                   <Link
-                    href={`/diseases?id=${condition}`}
+                    href={`/diseases?id=${encrypt(condition)}`}
                     key={condition}
                     className={styles.list_item}
                   >
