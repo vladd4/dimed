@@ -6,18 +6,19 @@ import Footer from "@/components/Footer/Footer";
 import Hamburger from "@/components/Header/Hamburger";
 import AlertForm from "@/components/AlertForm/AlertForm";
 import { ToastContainer } from "react-toastify";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "DIMED - центр вертебрології та реабілітації у Вінниці",
   description:
-    "Наша команда надає ряд послуг, а саме консультації невролога, вертебролога, сучасні високоінтенсивні фізіотерапевтичні процедури, якісний лікувальний масаж, комплексну індивідуально підібрану лікувальну фізкультуру.",
+    "Безопераційне відновлення хребта та суглобів у Вінниці. Консультація невролога, вертебролога, високоінтенсивні фіз. процедури, лікувальний масаж.",
   assets: ["https://dimed.vn.ua/"],
   openGraph: {
     title: "DIMED - центр вертебрології та реабілітації у Вінниці",
     description:
-      "Наша команда надає ряд послуг, а саме консультації невролога, вертебролога, сучасні високоінтенсивні фізіотерапевтичні процедури, якісний лікувальний масаж, комплексну індивідуально підібрану лікувальну фізкультуру.",
+      "Безопераційне відновлення хребта та суглобів у Вінниці. Консультація невролога, вертебролога, високоінтенсивні фіз. процедури, лікувальний масаж.",
     type: "website",
-    siteName: "Dimed",
+    siteName: "DIMED",
     url: "https://dimed.vn.ua/",
   },
   metadataBase: new URL("https://dimed.vn.ua/"),
@@ -31,7 +32,19 @@ export default function RootLayout({
   return (
     <html lang="uk">
       <head>
-        <meta property="author" content="vladdonets." />
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-8LRPZ84Q1L"
+        ></Script>
+        <Script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-8LRPZ84Q1L');
+          `}
+        </Script>
+        <meta property="author" content="vladdonets" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, user-scalable=no"

@@ -1,18 +1,19 @@
 @import "../../styles/variables";
 
 .root {
-  width: 90%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   color: $color-black;
+  background-color: #fff;
   h2 {
     font-size: calc(#{$size}* 1.4);
     font-weight: 400;
   }
   footer {
-    width: 100%;
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -134,12 +135,13 @@
 }
 @media screen and (max-width: 650px) {
   .root {
-    width: 95%;
+    width: 100%;
     h2 {
       font-size: 22px;
       display: none;
     }
     footer {
+      width: 95%;
       align-items: center;
       flex-direction: column-reverse;
       .logo_block {
